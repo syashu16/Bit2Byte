@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='/logo.png') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <script></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <title>BIT2BYTE</title>
+  <style>
+    .blogs {
+      background-color: black;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+
+    a {
+      text-decoration: none;
+      font-weight: bolder;
+      color: white;
+    }
+
+    .blogs h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #fff;
+    }
+
+    .blog-slider {
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      justify-content: flex-start;
+      gap: 20px;
+    }
+
+    .blog-post {
+      background-color: #222;
+      width: 30%;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: left;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 1s ease-in-out;
+    }
+
+    .blog-post img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .blog-post h3 {
+      font-size: 24px;
+      margin: 15px 0;
+    }
+
+    .blog-post p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .blog-post h3 a {
+      color: white;
+      font-size: 24px;
+      transition: color 0.3s ease;
+    }
+
+    .blog-post h3 a:hover {
+      color: #ee0404;
+    }
+
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .blog-post {
+        width: 100%;
+        /* Stack blog posts vertically on smaller screens */
+      }
+
+      .blog-slider {
+        animation: none;
+        /* Disable animation on small screens */
+      }
+    }
+
+    /* hr {
+      border: none;
+      height: 4px;
+      background: linear-gradient(to right, rgb(238, 180, 180), rgb(225, 160, 225), rgb(240, 240, 180), rgb(180, 230, 180), rgb(225, 175, 225));
+      border-radius: 5px;
+      margin: 20px auto;
+      width: 80%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    } */
+    /* Events Section Styling */
+    .events {
+      background-color: black;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .events h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #fff;
+    }
+
+    .event-slider {
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      justify-content: flex-start;
+      gap: 20px;
+    }
+
+    .event-post {
+      background-color: #222;
+      width: 30%;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: left;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 1s ease-in-out;
+    }
+
+    .event-post img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .event-post h3 {
+      font-size: 24px;
+      margin: 15px 0;
+    }
+
+    .event-post p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .event-post h3 a {
+      color: white;
+      font-size: 24px;
+      transition: color 0.3s ease;
+      font-weight: bolder;
+    }
+
+    .event-post h3 a:hover {
+      color: red;
+    }
+
+
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .event-post {
+        width: 100%;
+        /* Stack events vertically on smaller screens */
+      }
+
+      .event-slider {
+        animation: none;
+        /* Disable animation on small screens */
+      }
+    }
+
+    .reviews-section {
+      background-color: #f9f9f9;
+      text-align: center;
+      width: 100%;
+
+    }
+
+    .reviews-title {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .reviews-carousel {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .review-card {
+      background-color: white;
+      border-radius: 10px;
+      width: 300px;
+      margin: 0 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .review-header {
+      display: flex;
+      align-items: center;
+    }
+
+    .user-avatar {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .user-info h3 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .rating {
+      color: #FFD700;
+    }
+
+    .review-text {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .carousel-button {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      font-size: 24px;
+      padding: 10px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      border: none;
+      z-index: 10;
+    }
+
+    .prev-button {
+      left: 0;
+    }
+
+    .next-button {
+      right: 0;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .explore-courses-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 15px 30px;
+      background-color: #4caf50;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      justify-content: center;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+
+    .explore-courses-btn:hover {
+      background-color: #45a049;
+    }
+
+    .horizontal-courses {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .course-card {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      opacity: 1;
+    }
+
+    .course-card.active {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+
+    .course-card {
+      flex: 1 1 calc(25% - 40px);
+      max-width: 300px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .course-card:hover {
+      transform: scale(1.05);
+    }
+
+    .course-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .enroll-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4b954e;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .enroll-button:hover {
+      background-color: #227c3d;
+    }
+
+    .slideshow-container {
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      /* Hide overflow */
+      position: relative;
+    }
+
+    .mySlides {
+      display: none;
+      /* Hide all slides by default */
+      flex: 0 0 300px;
+      /* Set fixed width for cards */
+      transition: transform 0.5s ease;
+      opacity: 0;
+      /* Smooth transition */
+    }
+
+    .course-card {
+      margin: 0 10px;
+      /* Margin between cards */
+    }
+
+    /* Centered slide styling */
+    .mySlides.active {
+      display: block;
+      /* Show active slide */
+      transform: scale(1.1);
+      /* Slightly enlarge active slide */
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="/assets/icon.png" alt="Brand Logo" class="logo-img" />
+        Bit2Byte
+      </div>
+      <ul class="nav-links">
+        <li><a href="/h">Home</a></li>
+        <li><a href="/aboutus">About</a></li>
+        <li><a href="courses">Courses</a></li>
+        <li><a href=/contactus>Contact</a></li>
+        <li><a href=/events>Events</a></li>
+        <li><a href=/loginsigup class="btn">Get Started</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="main-message">
+        <h1>Transform Your Learning Journey</h1>
+        <p>
+          Unlock your potential with access to world-class courses from top universities and industry experts.
+          Start as a beginner, grow with hands-on practice, and become a pro.
+          From <strong>Bit to Byte</strong>, we help you achieve brilliance step by step.
+        </p>
+        <a href=/loginsigup class="btn">Get Started</a>
+      </div>
+      <div class="hero-image">
+        <img src="/assets/brandlogo.png" alt="Brand Logo">
+      </div>
+    </div>
+  </section>
+
+  <section class="edtech-section">
+    <div class="text-content">
+      <h1>Transform Your Educational</h1>
+      <p class="subtitle">Elevate Your Knowledge and Skills</p>
+      <div class="features">
+        <div class="feature">
+          <i class="fas fa-scroll"></i>
+          <div>
+            <h3>Unlock the Treasure Trove</h3>
+            <p>Embrace the Power of Learning</p>
+          </div>
+        </div>
+        <div class="feature">
+          <i class="fas fa-seedling"></i>
+          <div>
+            <h3>Explore and Grow</h3>
+            <p>Deepen Your Understanding</p>
+          </div>
+        </div>
+        <div class="feature">
+          <i class="fas fa-compass"></i>
+          <div>
+            <h3>Discover New Horizons</h3>
+            <p>Cultivate Your Expertise</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="image-container">
+      <img src="/assets/man.jpeg" alt="Person Image">
+    </div>
+  </section>
+  <!-- Famous Instructors Section -->
+  <section class="famous-instructors">
+    <h2>Industry Experienced Instructors</h2>
+    <div class="container">
+      <div class="instructors-grid">
+        <div class="instructor-card">
+          <img src="/assets/in1.jpeg" alt="Instructor 1">
+          <h3>Love Babbar</h3>
+          <p>CodeHelp | Ex SDE-2 Amazon | Google</p>
+        </div>
+        <div class="instructor-card">
+          <img src="/assets/in2.jpeg" alt="Instructor 2">
+          <h3>Shradha Khapra</h3>
+          <p>Apna Colege | Ex SDE-1 Microsoft | DRDO</p>
+        </div>
+        <div class="instructor-card">
+          <img src="/assets/in3.jpeg" alt="Instructor 3">
+          <h3>Neeraj Walia</h3>
+          <p>Famous Tech Content Creator | ezSnippet</p>
+        </div>
+        <div class="instructor-card">
+          <img src="/assets/in4.jpeg" alt="Instructor 4">
+          <h3>Haris Ali Khan </h3>
+          <p>Tech Youtuber | CodeWithHarry</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="blogs">
+    <h2>Latest Blogs</h2>
+    <div class="blog-slider">
+      <div class="blog-post">
+        <img src="/assets/ml.jpg" alt="Blog 1">
+        <h3><a href="/blog">UNDERSTANDING THE BASICS OF MACHINE LEARNING 🤖</a></h3>
+        <p>Machine learning is a subset of artificial intelligence (AI) that focuses on building systems that can learn
+          from data, identify patterns, and make decisions with minimal human intervention. 🌱 In this blog....</p>
+      </div>
+      <div class="blog-post">
+        <img src="/assets/webdev.jpeg" alt="Blog 2">
+        <h3><a href="/blog">GETTING STARTED WITH WEB DEVELOPMENT 🌐</a></h3>
+        <p>Web development is an exciting field that allows you to create websites and applications accessible through
+          the internet. 💻 Whether you are building simple static pages or complex interactive applications, web
+          development is a great way to express creativity and technical skills. In this blog....</p>
+      </div>
+      <div class="blog-post">
+        <img src="/assets/data.jpeg" alt="Blog 3">
+        <h3><a href="/blog">THE POWER OF DATA SCIENCE 📊</a></h3>
+        <p>Data science is transforming industries by turning raw data into valuable insights that can drive business
+          decisions. 📈 Whether you are analyzing customer behavior in retail 🛒 or detecting fraud in banking 💳, data
+          science helps businesses make data-driven decisions. In this blog...</p>
+      </div>
+    </div>
+  </section>
+  <section class="events">
+    <h2>Upcoming Events</h2>
+    <div class="event-slider">
+      <div class="event-post">
+        <img src="/assets/event1.avif" alt="Event 1">
+        <h3><a href="/events">Community Meetup - Fireside Chat with Kunal Kushwaha</a></h3>
+        <p>​Join us for an exciting and insightful session with Kunal Kushwaha, an industry expert, as he shares
+          valuable guidance on navigating the world of remote jobs, building a successful career in tech, and leveraging
+          the power of "Learning in Public."</p>
+      </div>
+      <div class="event-post">
+        <img src="/assets/event2.avif" alt="Event 2">
+        <h3><a href="/events">Supercharging Knowledge Graphs: RAG, Ontologies, & LLMs</a></h3>
+        <p>This meetup features three expert-led talks on cutting-edge Conversational AI, Knowledge Graphs, and
+          AI-powered solutions. Discover how Neo4j and GraphRAG are revolutionizing conversational agents, learn to
+          build knowledge graphs from text using LLMs, and explore the seamless integration of LangChain with Neo4j’s
+          LLM Builder to power up your AI applications.</p>
+      </div>
+      <div class="event-post">
+        <img src="/assets/event3.avif" alt="Event 3">
+        <h3><a href="/events">AI Day Bengaluru</a></h3>
+        <p>​The AI Day is a monthly gathering of industry leaders and AI enthusiasts who come together to explore the
+          latest advancements in Artificial Intelligence. Join us to learn from expert speakers, participate in hands-on
+          sessions, witness interactive demos, and network with like-minded professionals.</p>
+      </div>
+    </div>
+  </section>
+  <section class="certificate-section">
+    <div class="certificate-container">
+      <img src="/assets/photo.jpeg" alt="Certificate of Completion" class="certificate-img">
+      <div class="certificate-info">
+        <h2>Courses focused on building strong foundational skills for career growth</h2>
+        <div class="certificate-points">
+          <div class="certificate-point">
+            <i class="fas fa-check-circle"></i>
+            <p><strong>Learn from Industry Experts:</strong> Comprehensive self-paced courses created with top
+              practitioners.</p>
+          </div>
+          <div class="certificate-point">
+            <i class="fas fa-check-circle"></i>
+            <p><strong>Skill-based Learning:</strong> 600+ job-ready skills on offer in today's most in-demand domains.
+            </p>
+          </div>
+          <div class="certificate-point">
+            <i class="fas fa-check-circle"></i>
+            <p><strong>Free Resources:</strong> Free guides on career paths, salaries, interview tips, and more.</p>
+          </div>
+          <div class="certificate-point">
+            <i class="fas fa-check-circle"></i>
+            <p><strong>Learn Anytime, Anywhere:</strong> Learn while working or studying from any place, across any
+              device.</p>
+          </div>
+        </div>
+        <!-- Explore Courses Button -->
+        <a href="/dashboard" class="explore-courses-btn">Explore Courses</a>
+      </div>
+    </div>
+  </section>
+  <!-- Courses Section -->
+
+  <section id="courses" class="section">
+    <h2 class="courses-heading" style="text-align: center;">Explore Courses</h2>
+    <div class="student-dashboard">
+      <div class="slideshow-container">
+        <!-- Course Cards -->
+        <div class="course-card mySlides">
+          <img src="/assets/web.jpeg" alt="Course 1" class="card-img">
+          <h3 class="card-title">Web Development</h3>
+          <p class="card-description">Learn HTML, CSS, JavaScript, and build amazing websites.</p>
+          <a href="/webdev" class="enroll-button">View Course</a>
+        </div>
+
+        <div class="course-card mySlides">
+          <img src="/assets/data.jpeg" alt="Course 2" class="card-img">
+          <h3 class="card-title">Data Science</h3>
+          <p class="card-description">Master Python, Machine Learning, and Data Analysis.</p>
+          <a href="/datascience" class="enroll-button">View Course</a>
+        </div>
+
+        <div class="course-card mySlides">
+          <img src="/assets/dbms.png" alt="Course 3" class="card-img">
+          <h3 class="card-title">Database Management Systems</h3>
+          <p class="card-description">Learn about relational databases, SQL, and database design.</p>
+          <a href="/dbms" class="enroll-button">View Course</a>
+        </div>
+
+        <div class="course-card mySlides">
+          <img src="/assets/java.jpeg" alt="Course 4" class="card-img">
+          <h3 class="card-title">Java Programming</h3>
+          <p class="card-description">Master Java programming and build robust applications.</p>
+          <a href="/java" class="enroll-button">View Course</a>
+        </div>
+
+        <div class="course-card mySlides">
+          <img src="/assets/ml.png" alt="Course 5" class="card-img">
+          <h3 class="card-title">AI ML</h3>
+          <p class="card-description">Dive into the world of AI and Machine Learning, and build intelligent systems.</p>
+          <a href="/aiml" class="enroll-button">View Course</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Explore Courses Heading -->
+  <h2 class="courses-heading" style="text-align: center;">Newly Added Courses</h2>
+  <section class="student-dashboard">
+    <div class="horizontal-courses">
+      {% for course in courses %}
+      <div class="course-card" id="course-{{ loop.index }}">
+        <img src="{{ course[4] }}" alt="{{ course[1] }}">
+        <div class="course-info">
+          <strong>{{ course[1] }}</strong>
+          <p>{{ course[2] }}</p>
+          <button class="enroll-button" onclick="window.location.href='/enrol'">Enroll Now</button>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="reviews-section" style="width: 90%;">
+    <h2 class="reviews-title">What Our Learners Say</h2>
+    <div class="carousel-container">
+      <button class="carousel-button prev-button">&#8249;</button>
+      <div class="reviews-carousel">
+        <!-- Review 1 -->
+        <div class="review-card">
+          <div class="review-header">
+            <i class="fa-solid fa-user"></i>
+            <div class="user-info">
+              <h3>Vijendra Acharya</h3>
+              <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">
+            "The course materials in Bit2Byte were comprehensive, and the videos were highly beneficial. It was an
+            excellent experience!"
+          </p>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div class="review-header">
+            <i class="fa-solid fa-user"></i>
+            <div class="user-info">
+              <h3>Tejaswini Gadekar</h3>
+              <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">
+            "An amazing learning experience! Bit2Byte’s platform is innovative and engaging."
+          </p>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div class="review-header">
+            <i class="fa-solid fa-user"></i>
+            <div class="user-info">
+              <h3>Michael Lee</h3>
+              <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">
+            "Bit2Byte’s personalized learning paths helped me gain new skills and advance my career."
+          </p>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="review-card">
+          <div class="review-header">
+            <i class="fa-solid fa-user"></i>
+            <div class="user-info">
+              <h3>Priya Sharma</h3>
+              <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">
+            "The hands-on projects were incredible! I felt more confident in my abilities after completing the course."
+          </p>
+        </div>
+
+        <!-- Review 5 -->
+        <div class="review-card">
+          <div class="review-header">
+            <i class="fa-solid fa-user"></i>
+            <div class="user-info">
+              <h3>Amit Rao</h3>
+              <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">
+            "The instructors are industry experts. Their approach to teaching is very interactive and easy to follow."
+          </p>
+        </div>
+
+        <!-- Review 6 -->
+        <div class="review-card">
+          <div class="review-header">
+            <i class="fa-solid fa-user"></i>
+            <div class="user-info">
+              <h3>Rohit Verma</h3>
+              <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="review-text">
+            "I loved the way the courses were structured! They were detailed yet easy to understand, and I could learn
+            at my own pace."
+          </p>
+        </div>
+      </div>
+      <button class="carousel-button next-button">&#8250;</button>
+    </div>
+  </section>
+
+
+
+
+
+  <section class="faq-section">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <div class="faq-container">
+      <!-- FAQ Item 1 -->
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>What is Bit2Byte?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>
+            Bit2Byte is an online learning platform offering a variety of courses to help you develop in-demand skills
+            and achieve your educational goals.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>How do Bit2Byte courses compare to other platforms?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>
+            Bit2Byte offers comprehensive courses created by industry experts, with a focus on practical skills and
+            real-world applications.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Do I need any prior qualifications to join Bit2Byte courses?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>
+            No, our courses are designed for learners of all levels, from beginners to advanced professionals.
+          </p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>How can I access the courses?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>
+            You can access the courses by signing up on our platform and enrolling in the courses of your choice.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 5 -->
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Are there any free courses available?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>
+            Yes, we offer a selection of free courses that you can access without any cost. Check our course catalog for
+            more details.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 6 -->
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Can I get a certificate after completing a course?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>
+            Yes, you will receive a certificate of completion after successfully finishing a course.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- FAQ Item 4 -->
+
+
+
+
+
+  <footer class="footer">
+    <div class="container">
+      <!-- Main Footer Content -->
+      <div class="footer-content">
+        <!-- About Us Section -->
+        <div class="footer-item">
+          <h3><a href="#about">About Us</a></h3>
+          <p>
+            Bit2Byte is a leading online learning platform offering a wide range of courses to help you achieve your
+            educational goals.
+          </p>
+        </div>
+        <!-- Contact Us Section -->
+        <div class="footer-item">
+          <h3><a href="#contact">Contact Us</a></h3>
+          <p><i class="fas fa-phone"></i> +91 9905478212</p>
+          <p><i class="fas fa-envelope"></i> info@bit2byte.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> Christ University DHARMARAM COLLEGE, Hosur Main Road, Bengaluru,
+            Karnataka 560029</p>
+        </div>
+        <!-- Quick Links Section -->
+        <div class="footer-item">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/h">Home</a></li>
+            <li><a href="/aboutus">About</a></li>
+            <li><a href="/courses">Courses</a></li>
+            <li><a href=/contactus>Contact</a></li>
+            <li><a href="/compiler">Compiler</a></li>
+            <li><a href=/blog>Tech Blogs</a></li>
+          </ul>
+        </div>
+        <div class="footer-item">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-item">
+          <h3>Subscribe to Our Newsletter</h3>
+          <form action="/subscribe" method="post" class="newsletter-form">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Bit2Byte. All rights reserved.
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms And Conditions</a>
+        <p class="credits">
+          Developed by Yashu, Aditya, and Varun with <span class="emoji">❤️</span>
+        </p>
+        </p>
+        </p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    let currentIndex = 0;
+
+    const reviewCards = document.querySelectorAll('.review-card');
+    const totalReviews = reviewCards.length;
+
+    function showReview(index) {
+      const offset = -index * 320; // Assuming each card has a width of 300px + 20px margin
+      document.querySelector('.reviews-carousel').style.transform = `translateX(${offset}px)`;
+    }
+
+    document.querySelector('.prev-button').addEventListener('click', function () {
+      currentIndex = (currentIndex - 1 + totalReviews) % totalReviews;
+      showReview(currentIndex);
+    });
+
+    document.querySelector('.next-button').addEventListener('click', function () {
+      currentIndex = (currentIndex + 1) % totalReviews;
+      showReview(currentIndex);
+    });
+
+    // Automatically move to the next review every 3 seconds
+    setInterval(function () {
+      currentIndex = (currentIndex + 1) % totalReviews;
+      showReview(currentIndex);
+    }, 3000);
+
+    // Initial display
+    showReview(currentIndex);
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+
+      // Hide all slides
+      for (i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("active");
+        slides[i].style.display = "none";
+      }
+
+      slideIndex++;
+
+      // Reset slideIndex if it exceeds number of slides
+      if (slideIndex > slides.length) { slideIndex = 1 }
+
+      // Show the current slide
+      slides[slideIndex - 1].style.display = "block";
+      slides[slideIndex - 1].classList.add("active");
+
+      // Change slide every 2 seconds
+      setTimeout(showSlides, 2000);
+    }
+
+  </script>

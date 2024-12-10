@@ -1,0 +1,115 @@
+body.custom-page {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #bec9d0, #053e4e 40%, #b3e7ee);
+    color: #94dfe2;
+    overflow-x: hidden;
+}
+.compiler{
+    background: linear-gradient(135deg, #bec9d0, #053e4e 40%, #b3e7ee);
+    margin : 0;
+    padding : 0;
+    font-family: Arial, sans-serif;
+    color: #94dfe2;
+    overflow-x: hidden;
+
+}
+.custom-page h1 {
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+}
+
+.custom-page h3 {
+    color: #fff;
+    margin-left: 5px;
+}
+
+.custom-page #output {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: black;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 98%;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.custom-page .container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background: #2c3e50;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    min-height: 400px; /* Added to avoid collapse of container when empty */
+}
+
+.custom-page textarea {
+    width: 98%;
+    height: 200px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: black;
+    color: #ecf0f1;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    resize: none;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.custom-page select,
+.custom-page button {
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: blue;
+    color: white;
+    border: none;
+    margin-left: 5px;
+}
+
+.custom-page select {
+    cursor: pointer;
+}
+
+.custom-page button {
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.custom-page button:hover {
+    background-color: green;
+}
+
+.custom-page pre {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    color: #ecf0f1;
+    margin-bottom: 0px;
+    margin-top: 0px;
+
+}
+
+.custom-page #loading {
+    display: none; /* Ensure it's hidden */
+    text-align: center;
+    color: #f39c12;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+
+}

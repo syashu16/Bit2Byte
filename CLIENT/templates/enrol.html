@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll | Bit2Byte</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #f3f4f6, #dfe9f3);
+            color: #333;
+        }
+
+        header {
+            background-color: #4caf50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            padding: 20px;
+        }
+
+        .enroll-message {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 600px;
+            text-align: center;
+            animation: slideDown 1s ease-in-out;
+        }
+
+        .enroll-message h2 {
+            font-size: 1.8rem;
+            color: #e63946;
+            margin-bottom: 20px;
+        }
+
+        .enroll-message p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .back-to-dashboard-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-dashboard-btn:hover {
+            background-color: #388e3c;
+            transform: translateY(-2px);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Keyframe Animation for Availability Message */
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .availability-message {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #ff6f61;
+            text-align: center;
+            animation: fadeInOut 3s infinite;
+        }
+
+        /* Slide-down animation for the message box */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Enroll in Course</h1>
+    </header>
+    <main>
+        <section class="enroll-message">
+            <h2>Course Not Available</h2>
+            <p>The course you selected is currently not available for enrollment. Please visit later.</p>
+            <a href="/dashboard" class="back-to-dashboard-btn">Back to Dashboard</a>
+        </section>
+    </main>
+    <section class="availability-message">
+        <p>We are working hard to make this course available at the earliest. Stay tuned!</p>
+    </section>
+</body>
+
+</html>

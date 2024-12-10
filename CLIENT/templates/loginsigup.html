@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bit2Byte | Login/Signup</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='/logo.png') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='loginsigup.css') }}">
+
+</head>
+
+<body>
+  <div class="container">
+    <h2>Welcome to Bit2Byte</h2>
+    <p class="role-message">Please select your role to continue.</p>
+
+    <!-- Role Selection -->
+    <div class="role-buttons">
+      <button id="student-btn" class="active" name="student">Student</button>
+      <button id="instructor-btn" name="instructor">Instructor</button>
+    </div>
+
+    <p class="role-message" id="role-message">Sign up to unlock new learning opportunities as a student!</p>
+
+    <!-- Login Form -->
+    <div id="login-form">
+      <h3>Login</h3>
+      <form action="{{ url_for('login') }}" method="POST">
+        <input type="email" name="email" id="login-email" placeholder="Email" required>
+        <input type="password" name="password" id="login-password" placeholder="Password" required>
+        <button type="submit" class="btn">Login</button>
+        <p><a href="#">Forgot Password?</a></p>
+      </form>
+    </div>
+
+    <!-- Signup Form -->
+    <div id="signup-form" style="display: none;">
+      <h3>Sign Up</h3>
+      <form action="{{ url_for('signup') }}" method="POST">
+        <input type="text" name="name" id="signup-name" placeholder="Full Name" required>
+        <input type="email" name="email" id="signup-email" placeholder="Email" required>
+        <input type="password" name="password" id="signup-password" placeholder="Password" required>
+        <input type="hidden" name="role" id="signup-role" value="Student">
+        <button type="submit" class="btn">Create Account</button>
+      </form>
+    </div>
+
+    <!-- Social Login -->
+    <div class="social-login">
+      <p id="social-login-text">Or Login with</p>
+      <div class="social-icons">
+        <a href="#" class="fab fa-github" aria-label="Login with GitHub"></a>
+        <a href="#" class="fab fa-google" aria-label="Login with Gmail"></a>
+
+      </div>
+    </div>
+
+    <!-- Toggle Button -->
+    <button id="toggle-form" class="btn">Don't have an account? Sign Up</button>
+  </div>
+  <script>
+    const toggleFormButton = document.getElementById("toggle-form");
+    const loginForm = document.getElementById("login-form");
+    const signupForm = document.getElementById("signup-form");
+    const studentBtn = document.getElementById("student-btn");
+    const instructorBtn = document.getElementById("instructor-btn");
+    const roleMessage = document.getElementById("role-message");
+    const socialLoginText = document.getElementById("social-login-text");
+    const roleInput = document.getElementById("signup-role"); // Hidden input field for role
+
+    // Toggle between Login and Signup forms
+    toggleFormButton.addEventListener("click", () => {
+      if (signupForm.style.display === "none") {
+        signupForm.style.display = "block";
+        loginForm.style.display = "none";
+        toggleFormButton.textContent = "Already have an account? Login";
+        socialLoginText.textContent = "Or Sign Up with";
+      } else {
+        signupForm.style.display = "none";
+        loginForm.style.display = "block";
+        toggleFormButton.textContent = "Don't have an account? Sign Up";
+        socialLoginText.textContent = "Or Login with";
+      }
+    });
+
+    // Update role selection and message
+    studentBtn.addEventListener("click", () => {
+      studentBtn.classList.add("active");
+      instructorBtn.classList.remove("active");
+      roleMessage.textContent =
+        "Sign up to unlock new learning opportunities as a student!";
+      roleInput.value = "Student"; // Set role to Student
+    });
+
+    instructorBtn.addEventListener("click", () => {
+      instructorBtn.classList.add("active");
+      studentBtn.classList.remove("active");
+      roleMessage.textContent =
+        "Sign up to share knowledge and teach as an instructor!";
+      roleInput.value = "Instructor"; // Set role to Instructor
+    });
+
+  </script>
+
+</body>
+
+</html>

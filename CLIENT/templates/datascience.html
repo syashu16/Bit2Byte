@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Stack Development Course - Build Dynamic Web Applications</title>
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='course.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo" style="color:white" ;>
+                <img src="/assets/icon.png" alt="Brand Logo" class="logo-img" />
+                Bit2Byte
+            </div>
+            <ul class="nav-links">
+                <li><a href="/h">Home</a></li>
+                <li><a href="/aboutus">About</a></li>
+                <li><a href="courses">Courses</a></li>
+                <li><a href=/contactus>Contact</a></li>
+                <li><a href=/events>Events</a></li>
+                <li><a href=/loginsigup class="btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- Main Section -->
+    <main>
+        <!-- Course Overview Section -->
+        <section class="course-overview">
+            <div class="course-info">
+                <h1>Data Science Course - Learn Data Analytics</h1>
+                <p><strong>Free Data Science Course with Certificate Online (2024)</strong></p>
+                <p>Dive into the world of Data Science and learn how to analyze, visualize, and model data. This course
+                    covers Python for Data Science, machine learning, and advanced analytics techniques, helping you
+                    become a proficient data scientist.</p>
+            </div>
+        </section>
+
+        <!-- Course Details and Video Section -->
+        <section class="course-details-video">
+            <div class="video-section">
+                <video width="100%" height="auto" controls>
+                    <source src="/assets/data.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="course-details">
+                <h3>Course Details</h3><br>
+                <p>📅 Duration: 15h 45m (10 Modules)</p>
+                <p>⚡ Challenges: 20 Projects</p>
+                <p>🧑‍🎓 Course Level: Beginner to Intermediate</p>
+                <p>🏆 Certificate: Included</p>
+            </div>
+        </section>
+
+        <!-- What You Will Learn Section -->
+        <section class="what-learn">
+            <h2>What You Will Learn</h2>
+            <ul>
+                <li>✔️ Understand the basics of data science and analytics</li>
+                <li>✔️ Master data manipulation using Python and Pandas</li>
+                <li>✔️ Visualize data using Matplotlib and Seaborn</li>
+                <li>✔️ Work with machine learning models: linear regression, decision trees, and clustering</li>
+                <li>✔️ Perform exploratory data analysis (EDA)</li>
+                <li>✔️ Gain hands-on experience with real-world datasets</li>
+            </ul>
+
+            <!-- Enroll Button -->
+            <div class="enroll-section">
+                <button>Enroll Now</button>
+            </div>
+        </section>
+
+        <!-- Course Content Section -->
+        <section class="course-content">
+            <h2>Course Content</h2>
+            <p>📚 10 Modules | 🎥 150 Lessons | ⏰ 15h 45m</p>
+            <div class="modules-container">
+                <div class="module-box">
+                    <h3>Module 1: Introduction to Data Science</h3>
+                    <ul>
+                        <li>What is Data Science? (8:00)</li>
+                        <li>The Data Science Process (7:30)</li>
+                        <li>Applications of Data Science (6:20)</li>
+                    </ul>
+                </div>
+                <div class="module-box">
+                    <h3>Module 2: Python for Data Science</h3>
+                    <ul>
+                        <li>Python Basics (12:00)</li>
+                        <li>Working with Numpy and Pandas (20:00)</li>
+                        <li>Data Cleaning Techniques (18:30)</li>
+                    </ul>
+                </div>
+                <div class="module-box">
+                    <h3>Module 3: Data Visualization</h3>
+                    <ul>
+                        <li>Introduction to Visualization Libraries (10:15)</li>
+                        <li>Creating Visualizations with Matplotlib (15:45)</li>
+                        <li>Advanced Visualizations with Seaborn (18:00)</li>
+                    </ul>
+                </div>
+                <div class="module-box">
+                    <h3>Module 4: Machine Learning Basics</h3>
+                    <ul>
+                        <li>Introduction to Machine Learning (12:30)</li>
+                        <li>Supervised vs. Unsupervised Learning (10:45)</li>
+                        <li>Building Your First ML Model (15:00)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instructor Section -->
+        <section class="instructor">
+            <h2>Instructor of this Course</h2>
+            <div class="instructor-container">
+                <div class="instructor-image">
+                    <img src="assets/ins5.jpeg" alt="Instructor Photo">
+                </div>
+                <div class="instructor-details">
+                    <p><strong>Dr. Neha Gupta</strong></p>
+                    <div class="instructor-stats">
+                        <div>👨‍🎓 3000+ Students Taught</div>
+                        <div>🕒 400 Hours of Lectures Delivered</div>
+                        <div>⭐ 5-Star Rated Instructor</div>
+                        <div>📚 4 Courses</div>
+                    </div>
+                </div>
+            </div>
+            <div class="instructor-bio">
+                <p>
+                    Dr. Neha Gupta is a data scientist with over 10 years of experience in the analytics industry.
+                    Passionate about teaching, she has worked with global firms to solve real-world data challenges. Her
+                    expertise lies in Python, machine learning, and big data.
+                </p>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews">
+            <h2>Reviews</h2>
+            <div id="review-container">
+                <div class="review">
+                    <p>"This Data Science course was a game changer for my career. The hands-on projects were
+                        excellent!"</p>
+                    <p>- Priya Kapoor</p>
+                </div>
+                <div class="review">
+                    <p>"The course content is comprehensive, and the real-world datasets made the learning engaging."
+                    </p>
+                    <p>- Karan Singh</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="footer-content">
+                <!-- About Us Section -->
+                <div class="footer-item">
+                    <h3><a href="#about">About Us</a></h3>
+                    <p>
+                        Bit2Byte is a leading online learning platform offering a wide range of courses to help you
+                        achieve your
+                        educational goals.
+                    </p>
+                </div>
+                <!-- Contact Us Section -->
+                <div class="footer-item">
+                    <h3><a href="#contact">Contact Us</a></h3>
+                    <p><i class="fas fa-phone"></i> +91 9905478212</p>
+                    <p><i class="fas fa-envelope"></i> info@bit2byte.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Christ University DHARMARAM COLLEGE, Hosur Main Road,
+                        Bengaluru,
+                        Karnataka 560029</p>
+                </div>
+                <!-- Quick Links Section -->
+                <div class="footer-item">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/h">Home</a></li>
+                        <li><a href="/aboutus">About</a></li>
+                        <li><a href="/courses">Courses</a></li>
+                        <li><a href=/contactus>Contact</a></li>
+                        <li><a href="/compiler">Compiler</a></li>
+                        <li><a href=/blog>Tech Blogs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-item">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <form action="/subscribe" method="post" class="newsletter-form">
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bit2Byte. All rights reserved.
+                <p><a href="#">Privacy Policy</a> | <a href="#">Terms And Conditions</a>
+                <p class="credits">
+                    Developed by Yashu, Aditya, and Varun with <span class="emoji">❤️</span>
+                </p>
+                </p>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Dynamic Reviews -->
+    <script>
+        const reviews = [
+            { text: "This Data Science course was a game changer for my career. The hands-on projects were excellent!", author: "Priya Kapoor" },
+            { text: "The course content is comprehensive, and the real-world datasets made the learning engaging.", author: "Karan Singh" },
+            { text: "Highly recommend this course for beginners and intermediates in data science.", author: "Rajesh Iyer" },
+        ];
+
+        let currentReview = 0;
+
+        function updateReviews() {
+            const reviewContainer = document.getElementById("review-container");
+            const review = reviews[currentReview];
+            reviewContainer.innerHTML = `
+                <div class="review">
+                    <p>"${review.text}"</p>
+                    <p>- ${review.author}</p>
+                </div>
+            `;
+            currentReview = (currentReview + 1) % reviews.length;
+        }
+
+        // Rotate reviews every 5 seconds
+        setInterval(updateReviews, 2500);
+        updateReviews();
+    </script>
+</body>
+
+</html>

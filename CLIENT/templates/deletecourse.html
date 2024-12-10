@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bit@Byte | Delete Course</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='instructor.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='/logo.png') }}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Course</h1>
+        <form action="/deletecourse" method="POST">
+            <!-- Course ID -->
+            <div class="form-group">
+                <label for="course_id">Course ID:</label>
+                <input type="number" id="course_id" name="course_id" class="form-control" placeholder="Enter course ID" required>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-danger">Delete Course</button>
+            </div>
+        </form>
+
+        <!-- Back to Dashboard -->
+        <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    </div>
+</body>
+</html>

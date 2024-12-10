@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Stack Development Course - Build Dynamic Web Applications</title>
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='course.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo" style="color:white";>
+                <img src="/assets/icon.png" alt="Brand Logo" class="logo-img" />
+                Bit2Byte
+            </div>
+            <ul class="nav-links">
+                <li><a href="/h">Home</a></li>
+                <li><a href="/aboutus">About</a></li>
+                <li><a href="courses">Courses</a></li>
+                <li><a href=/contactus>Contact</a></li>
+                <li><a href=/events>Events</a></li>
+                <li><a href=/loginsigup class="btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Course Overview Section -->
+        <section class="course-overview">
+            <div class="course-info">
+                <h1>DBMS Course - Master Database Management Systems</h1>
+                <p><strong>Free DBMS Course with Certificate Online (2024)</strong></p>
+                <p>Learn the fundamentals of Database Management Systems (DBMS) and how to manage data effectively. This course covers relational databases, SQL, normalization, and more, preparing you for a career in database management and backend development.</p>
+            </div>
+        </section>
+
+        <!-- Course Details and Video Section -->
+        <section class="course-details-video">
+            <div class="video-section">
+                <video width="100%" height="auto" controls>
+                    <source src="/assets/dbms.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="course-details">
+                <h3>Course Details</h3><br>
+                <p>📅 Duration: 10h 45m (8 Modules)</p>
+                <p>⚡ Challenges: 12 Quizzes</p>
+                <p>🧑‍🎓 Course Level: Beginner to Intermediate</p>
+                <p>🏆 Certificate: Included</p>
+            </div>
+        </section>
+
+        <!-- What You Will Learn Section -->
+        <section class="what-learn">
+            <h2>What You Will Learn</h2>
+            <ul>
+                <li>✔️ Understand the basics of databases and database models</li>
+                <li>✔️ Master SQL for querying and manipulating data</li>
+                <li>✔️ Learn data normalization and design efficient databases</li>
+                <li>✔️ Work with relational and non-relational databases</li>
+                <li>✔️ Implement indexing and optimization techniques</li>
+                <li>✔️ Develop real-world projects using DBMS concepts</li>
+            </ul>
+
+            <!-- Enroll Button -->
+            <div class="enroll-section">
+                <button>Enroll Now</button>
+            </div>
+        </section>
+
+        <!-- Course Content Section -->
+        <section class="course-content">
+            <h2>Course Content</h2>
+            <p>📚 8 Modules | 🎥 100 Lessons | ⏰ 10h 45m</p>
+            <div class="modules-container">
+                <div class="module-box">
+                    <h3>Module 1: Introduction to DBMS</h3>
+                    <ul>
+                        <li>What is DBMS? (6:30)</li>
+                        <li>Advantages of Database Systems (8:00)</li>
+                        <li>Overview of Database Models (7:45)</li>
+                    </ul>
+                </div>
+                <div class="module-box">
+                    <h3>Module 2: Relational Model</h3>
+                    <ul>
+                        <li>Introduction to Relational Model (12:00)</li>
+                        <li>Primary and Foreign Keys (10:30)</li>
+                        <li>Relational Algebra Basics (15:00)</li>
+                    </ul>
+                </div>
+                <div class="module-box">
+                    <h3>Module 3: SQL Basics</h3>
+                    <ul>
+                        <li>Introduction to SQL (8:45)</li>
+                        <li>Writing Queries and Joins (20:00)</li>
+                        <li>Aggregate Functions and Grouping (18:00)</li>
+                    </ul>
+                </div>
+                <div class="module-box">
+                    <h3>Module 4: Database Design</h3>
+                    <ul>
+                        <li>Normalization: 1NF, 2NF, and 3NF (30:00)</li>
+                        <li>Entity-Relationship Modeling (25:00)</li>
+                        <li>Database Schema Design (15:30)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instructor Section -->
+        <section class="instructor">
+            <h2>Instructor of this Course</h2>
+            <div class="instructor-container">
+                <div class="instructor-image">
+                    <img src="/assets/ins3.webp" alt="Instructor Photo">
+                </div>
+                <div class="instructor-details">
+                    <p><strong>Ravi Verma</strong></p>
+                    <div class="instructor-stats">
+                        <div>👨‍🎓 1500+ Students Taught</div>
+                        <div>🕒 180 Hours of Lectures Delivered</div>
+                        <div>⭐ 4.9-Star Rated Instructor</div>
+                        <div>📚 2 Courses</div>
+                    </div>
+                </div>
+            </div>
+            <div class="instructor-bio">
+                <p>
+                    Ravi Verma is a database architect and educator with expertise in SQL, relational databases, and data optimization. With over a decade of experience, Ravi ensures students develop a deep understanding of DBMS concepts and practical implementation.
+                </p>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews">
+            <h2>Reviews</h2>
+            <div id="review-container">
+                <div class="review">
+                    <p>"The DBMS course explained complex concepts like normalization and SQL in a simple and easy-to-understand way. Highly recommended!"</p>
+                    <p>- Priya Raj</p>
+                </div>
+                <div class="review">
+                    <p>"An excellent course for beginners and intermediate learners. I loved the practical examples and projects."</p>
+                    <p>- Harish Kumar</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+          <!-- Main Footer Content -->
+          <div class="footer-content">
+            <!-- About Us Section -->
+            <div class="footer-item">
+              <h3><a href="#about">About Us</a></h3>
+              <p>
+                Bit2Byte is a leading online learning platform offering a wide range of courses to help you achieve your
+                educational goals.
+              </p>
+            </div>
+            <!-- Contact Us Section -->
+            <div class="footer-item">
+              <h3><a href="#contact">Contact Us</a></h3>
+              <p><i class="fas fa-phone"></i> +91 9905478212</p>
+              <p><i class="fas fa-envelope"></i> info@bit2byte.com</p>
+              <p><i class="fas fa-map-marker-alt"></i> Christ University DHARMARAM COLLEGE, Hosur Main Road, Bengaluru,
+                Karnataka 560029</p>
+            </div>
+            <!-- Quick Links Section -->
+            <div class="footer-item">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="/h">Home</a></li>
+                <li><a href="/aboutus">About</a></li>
+                <li><a href="/courses">Courses</a></li>
+                <li><a href=/contactus>Contact</a></li>
+                <li><a href="/compiler">Compiler</a></li>
+                <li><a href=/blog>Tech Blogs</a></li>
+              </ul>
+            </div>
+            <div class="footer-item">
+              <h3>Follow Us</h3>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+            <div class="footer-item">
+              <h3>Subscribe to Our Newsletter</h3>
+              <form action="/subscribe" method="post" class="newsletter-form">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit" class="btn">Subscribe</button>
+              </form>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2024 Bit2Byte. All rights reserved.
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms And Conditions</a>
+            <p class="credits">
+              Developed by Yashu, Aditya, and Varun with <span class="emoji">❤️</span>
+            </p>
+            </p>
+            </p>
+          </div>
+        </div>
+      </footer>
+
+    <!-- JavaScript for Dynamic Reviews -->
+    <script>
+        const reviews = [
+            { text: "The DBMS course explained complex concepts like normalization and SQL in a simple and easy-to-understand way. Highly recommended!", author: "Priya Raj" },
+            { text: "An excellent course for beginners and intermediate learners. I loved the practical examples and projects.", author: "Harish Kumar" },
+            { text: "A fantastic DBMS course! The instructor made learning SQL and database design enjoyable.", author: "Siddharth Kapoor" },
+        ];
+
+        let currentReview = 0;
+
+        function updateReviews() {
+            const reviewContainer = document.getElementById("review-container");
+            const review = reviews[currentReview];
+            reviewContainer.innerHTML = `
+                <div class="review">
+                    <p>"${review.text}"</p>
+                    <p>- ${review.author}</p>
+                </div>
+            `;
+            currentReview = (currentReview + 1) % reviews.length;
+        }
+
+        // Rotate reviews every 5 seconds
+        setInterval(updateReviews, 2500);
+        updateReviews();
+    </script>
+</body>
+</html>

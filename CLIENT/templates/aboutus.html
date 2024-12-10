@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Bit2Byte</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='/logo.png') }}" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='aboutus.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="{{ url_for('static', filename='') }}"></script>
+    
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo" style="color: white;">
+                <img src="/assets/icon.png" alt="Brand Logo" class="logo-img" />
+                Bit2Byte
+            </div>
+            <ul class="nav-links">
+                <li><a href="/h">Home</a></li>
+                <li><a href="/aboutus">About</a></li>
+                <li><a href="/courses">Courses</a></li>
+                <li><a href="/contactus">Contact</a></li>
+                <li><a href="/loginsigup" class="btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="about-us" id="about">
+        <div class="container">
+            <div class="about-content">
+                <h2>About Us</h2>
+                <p>Welcome to <strong>Bit2Byte</strong>, your gateway to transformative learning experiences. Our
+                    platform is dedicated to empowering learners worldwide with the skills and knowledge they need to
+                    thrive in the digital age.</p>
+                <h3>Our Mission</h3>
+                <p>At Bit2Byte, our mission is to make high-quality education accessible to everyone. We believe in
+                    combining cutting-edge technology with innovative teaching methodologies to create an engaging,
+                    interactive, and effective learning environment.</p>
+                <h3>Why Choose Us?</h3>
+                <ul>
+                    <li><strong>Expert Instructors:</strong> Learn from industry leaders and educators with proven
+                        expertise.</li>
+                    <li><strong>Interactive Courses:</strong> Engaging video lessons, quizzes, and projects to enhance
+                        learning.</li>
+                    <li><strong>24/7 Support:</strong> Our dedicated support team is always here to assist you.</li>
+                    <li><strong>Global Community:</strong> Connect and collaborate with learners from around the world.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="footer-content">
+                <!-- About Us Section -->
+                <div class="footer-item">
+                    <h3><a href="#about">About Us</a></h3>
+                    <p>
+                        Bit2Byte is a leading online learning platform offering a wide range of courses to help you
+                        achieve your
+                        educational goals.
+                    </p>
+                </div>
+                <!-- Contact Us Section -->
+                <div class="footer-item">
+                    <h3><a href="#contact">Contact Us</a></h3>
+                    <p><i class="fas fa-phone"></i> +91 9905478212</p>
+                    <p><i class="fas fa-envelope"></i> info@bit2byte.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Christ University DHARMARAM COLLEGE, Hosur Main Road,
+                        Bengaluru,
+                        Karnataka 560029</p>
+                </div>
+                <!-- Quick Links Section -->
+                <div class="footer-item">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/aboutus">About</a></li>
+                        <li><a href="/courses">Courses</a></li>
+                        <li><a href="/contactus">Contact</a></li>
+                        <li><a href=/compiler>Compiler</a></li>
+                    </ul>
+                </div>
+                <div class="footer-item">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <form action="/subscribe" method="post" class="newsletter-form">
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bit2Byte. All rights reserved.
+                <p><a href="#">Privacy Policy</a> | <a href="#">Terms And Conditions</a>
+                <p class="credits">
+                    Developed by Yashu, Aditya, and Varun with <span class="emoji">❤️</span>
+                </p>
+                </p>
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Thank you for your message!');
+        });
+    </script>
+</body>
+
+</html>

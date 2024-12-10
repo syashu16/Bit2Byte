@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Bit2Byte</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='/logo.png') }}" />
+    <style>
+        /* General Reset */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .dark-mode-toggle {
+            position: relative;
+            left: 200px;
+            z-index: 10;
+            background-color: #000000;
+            color: white;
+            border: none;
+
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            width: 50px;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: #000000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-left span {
+            margin-left: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-links ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            margin: 0;
+        }
+
+        .nav-links ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Sidebar */
+        .main-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 150px;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sidebar Links Styling */
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar-menu li a {
+            color: #4CAF50;
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Hover Effects */
+        .sidebar-menu li a:hover {
+            background-color: #e8e8e8;
+            color: #333;
+        }
+
+        .sidebar-menu li a.active {
+            font-weight: bold;
+        }
+
+        /* Content Area */
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #4CAF50;
+        }
+
+        .course-list,
+        .dashboard-cards {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .course-list li,
+        .card {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .course-list li img,
+        .profile-section .avatar {
+            width: 150px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 5px;
+            background-color: #f39c12;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .actions a,
+        .enroll-button,
+        .add-button,
+        .action-section button {
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Action Section Styles */
+        .action-section {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* Dashboard Banner */
+        .dashboard-banner img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Hover effects for buttons */
+        .action-section button:hover,
+        .actions a.edit,
+        .actions a.delete,
+        .actions a:hover,
+        .enroll-button:hover {
+            background-color: #45a049;
+            transition: .3s;
+        }
+
+        .session {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .session a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Horizontal Scrolling Container */
+        .horizontal-courses {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 10px;
+            scroll-behavior: smooth;
+            width: 100%;
+        }
+
+        /* Hide the scrollbar for better aesthetics */
+        .horizontal-courses::-webkit-scrollbar {
+            display: none;
+        }
+
+        .horizontal-courses {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Individual Course Card */
+        .course-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            min-width: 250px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .course-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .course-info {
+            padding: 15px;
+        }
+
+        .course-info strong {
+            display: block;
+            font-size: 16px;
+            color: #4CAF50;
+            margin-bottom: 5px;
+        }
+
+        .course-info p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .enroll-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .horizontal-courses {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .course-card {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .course-card.active {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .course-card {
+            flex: 1 1 calc(25% - 40px);
+            max-width: 300px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: scale(1.05);
+        }
+
+        .course-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .enroll-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Student Dashboard Section */
+        .student-dashboard {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .horizontal-courses {
+            display: flex;
+            overflow-x: auto;
+            width: 100%;
+            padding-bottom: 20px;
+        }
+
+        .course-card {
+            display: inline-block;
+            min-width: 300px;
+            margin-right: 20px;
+            transition: opacity 0.5s ease;
+            border: 1px solid #000000;
+        }
+
+        .course-card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .course-info {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .enroll-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .enroll-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #f9f9f9;
+        }
+
+        body.dark-mode header {
+            background-color: #1e1e1e;
+            color: white;
+        }
+
+        body.dark-mode .sidebar {
+            background-color: #1e1e1e;
+        }
+
+        body.dark-mode .sidebar-menu li a {
+            color: #a1a1a1;
+        }
+
+        body.dark-mode .sidebar-menu li a:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        /* Toggle Button Styles */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: #45a049;
+        }
+
+        .quiz-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .quiz-modal-content {
+            background-color:#4CAF50;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid black;
+        }
+
+        #domainSelect {
+            margin: 15px 0;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .operations {
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+    }
+    .operations button {
+      padding: 15px;
+      font-size: 18px;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .operations button:hover {
+      background-color: #0056b3;
+    }
+    </style>
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="/assets/icon.png" alt="Brand Logo" class="brand-logo"> <!-- Added brand logo -->
+            <span>Bit2Byte</span>
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="/h">Home</a></li>
+                <li><a href="/compiler">Compiler</a></li>
+                <li><a href="/blog">Blogs</a></li>
+                <li><a href="/events">Events</a></li>
+                <li><a href="/courses">Courses</a></li>
+            </ul>
+        </nav>
+        <div class="user-profile">
+            <i class="fas fa-user-circle"></i>
+            <a href="/profile" class="session">{{ session['user_name'] }}</a>
+        </div>
+        <button id="dark-mode-toggle" class="dark-mode-toggle">🌙</button>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active">Profile</a></li>
+                <li><a href="/h">Home</a></li>
+                <li><a href="/compiler">Compiler</a></li>
+                <li><a href="/blog">Blogs</a></li>
+                <li><a href="/events">Events</a></li>
+                <li><a href="/courses">Courses</a></li>
+                <li><a href="/contactus">Contactus</a></li>
+                <li><a href="/aboutus">About Us</a></li>
+                <li><a href="#" style="color: green;">Logout</a></li>
+                <li><a href="/loginsigup" style="color: green;">Login</a></li>
+                <li class="report-problem"><a href="/report" style="color: rgb(255, 0, 0);">Report a Problem</a></li>
+            </ul>
+        </aside>
+
+        <!-- Content -->
+        <main class="content">
+            {% if role == 'instructor' %}
+            <!-- Instructor Dashboard Section -->
+            <section class="instructor-dashboard">
+                <div class="dashboard">
+                    <h1>Instructor Dashboard</h1>
+                    <div class="operations">
+                        <!-- Use Flask's URL routing -->
+                        <a href=/add><button>Add Course</button></a>
+                        <a href=/update><button>Update Course</button></a>
+                        <a href=/delete><button>Delete Course</button></a>
+                      </div>
+
+                <!-- Your Courses Section -->
+                <h3>Your Courses</h3>
+                <div class="horizontal-courses">
+                    {% for course in courses %}
+                    <div class="course-card" style="display: none;" id="course-{{ loop.index }}">
+                        <img src="{{ course[4] }}" alt="{{ course[1] }}">
+                        <div class="course-info">
+                            <strong>{{ course[1] }}</strong>
+                            <p>{{ course[2] }}</p>
+                            <button class="enroll-button">Enroll Now</button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            {% elif role == 'student' %}
+            <!-- Student Dashboard Section -->
+            <section class="student-dashboard">
+                <h2>Student Panel</h2>
+                <h3>Available Courses</h3>
+                <div class="horizontal-courses">
+                    {% for course in courses %}
+                    <div class="course-card" style="display: none;" id="course-{{ loop.index }}">
+                        <img src="{{ course[4] }}" alt="{{ course[1] }}">
+                        <div class="course-info">
+                            <strong>{{ course[1] }}</strong>
+                            <p>{{ course[2] }}</p>
+                            <button class="enroll-button" onclick="window.location.href='/enrol'">Enroll Now</button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+            {% endif %}
+
+
+
+
+            <!-- Action Sections -->
+            <div class="action-section">
+                <h4>Begin Learning from Industry Professionals</h4>
+                <p>You havent enrolled any courses yet. When you enroll in a course, it will appear here.</p>
+                <button>Explore Courses</button> <!-- Explore courses button -->
+            </div>
+
+            <!-- Another Action Section -->
+            <div class="action-section">
+                <h4>Start Taking Prerequisite Quiz To Analyze Which Course To Take</h4>
+                <button id="quizButton">Take Quizzes</button>
+            </div>
+
+            <!-- Modal for Quiz Selection -->
+            <div id="quizModal" class="quiz-modal" style="display: none;">
+                <div class="quiz-modal-content">
+                    <h3>Select a Domain</h3>
+                    <select id="domainSelect">
+                        <option value="" disabled selected>Select a domain</option>
+                        <option value="/quiz/python">Python</option>
+                        <option value="/quiz/dbms">DBMS</option>
+                        <option value="/quiz/webdev">Web Development</option>
+                    </select>
+                    <button id="startQuiz">Start Quiz</button>
+                    <button id="closeModal">Cancel</button>
+                </div>
+            </div>
+
+        </main><!-- End of Content Area-->
+    </div><!-- End of Main Container-->
+</body>
+
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const courses = document.querySelectorAll('.course-card');
+        let currentIndex = 0;
+
+        // Function to remove active class from all courses
+        function removeActiveClasses() {
+            courses.forEach(course => course.classList.remove('active'));
+        }
+
+        // Function to set the active class for the current course
+        function showCourse(index) {
+            removeActiveClasses();
+            courses.forEach((course, i) => {
+                if (i === index) {
+                    course.classList.add('active');
+                    course.style.display = 'inline-block';
+                } else {
+                    course.style.display = 'inline-block'; // Ensure all are visible but blurred
+                }
+            });
+        }
+
+        // Initially show the first course in focus
+        showCourse(currentIndex);
+
+        // Rotate courses every 5 seconds
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % courses.length; // Move to the next course
+            showCourse(currentIndex);
+        }, 5000); // 5 seconds interval
+    });
+
+
+</script>
+<script>
+    // Function to handle logout
+    document.querySelector('.sidebar-menu a[style="color: green;"]').addEventListener('click', function (event) {
+        event.preventDefault();
+        if (confirm('Are you sure you want to logout?')) {
+            window.location.href = '/logout';
+        }
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+
+        // Check for saved dark mode preference in localStorage
+        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+        // Apply dark mode if preference is saved
+        if (isDarkMode) {
+            body.classList.add('dark-mode');
+        }
+
+        // Toggle dark mode on button click
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const darkModeEnabled = body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', darkModeEnabled); // Save preference
+        });
+    });
+   // Handle modal toggle
+    const quizButton = document.getElementById('quizButton');
+    const quizModal = document.getElementById('quizModal');
+    const closeModal = document.getElementById('closeModal');
+    const startQuiz = document.getElementById('startQuiz');
+    const domainSelect = document.getElementById('domainSelect');
+
+    quizButton.addEventListener('click', () => {
+        quizModal.style.display = 'flex';
+    });
+
+    closeModal.addEventListener('click', () => {
+        quizModal.style.display = 'none';
+    });
+
+    startQuiz.addEventListener('click', () => {
+        const selectedDomain = domainSelect.value;
+        if (selectedDomain) {
+            window.location.href = selectedDomain;
+        } else {
+            alert('Please select a domain.');
+        }
+    });
+
+
+
+
+
+    // Function to handle report a problem
+    document.querySelector('.report-problem a').addEventListener('click', function (event) {
+        event.preventDefault();
+        if (confirm('Do you want to report a problem?')) {
+            window.location.href = '/report';
+        }
+    });
+</script>

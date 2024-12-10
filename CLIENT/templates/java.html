@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Stack Development Course - Build Dynamic Web Applications</title>
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='course.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo" style="color:white";>
+                <img src="/assets/icon.png" alt="Brand Logo" class="logo-img" />
+                Bit2Byte
+            </div>
+            <ul class="nav-links">
+                <li><a href="/h">Home</a></li>
+                <li><a href="/aboutus">About</a></li>
+                <li><a href="courses">Courses</a></li>
+                <li><a href=/contactus>Contact</a></li>
+                <li><a href=/events>Events</a></li>
+                <li><a href=/loginsigup class="btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Course Overview Section -->
+        <section class="course-overview">
+            <div class="course-info">
+                <h1>Python Course - Mastering the Fundamentals</h1>
+                <p><strong>Free Python Course with Certificate Online (2024)</strong></p>
+                <p>Embark on your programming journey with Python. This course is designed to provide a solid foundation in Python programming, from the basics to object-oriented programming and beyond. Perfect for beginners, this course will equip you with the skills needed to develop real-world Python applications.</p>
+            </div>
+        </section>
+
+        <!-- Course Details and Video Section -->
+        <section class="course-details-video">
+            <div class="video-section">
+                <video width="100%" height="auto" controls>
+                    <source src="/assets/python.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="course-details">
+                <h3>Course Details</h3><br>
+                <p>📅 Duration: 8h 9m (7 Modules)</p>
+                <p>⚡ Challenges: 10 Challenges</p>
+                <p>🧑‍🎓 Course Level: Beginner</p>
+                <p>🏆 Certificate: Included</p>
+            </div>
+        </section>
+
+        <!-- What You Will Learn Section -->
+        <section class="what-learn">
+            <h2>What You Will Learn</h2>
+            <ul>
+                
+                <li>✔️ Understand Python basics: variables, data types, and control flow </li>
+                <li>✔️ Work with advanced data structures: lists, dictionaries, and sets</li>
+                <li>✔️ Master functions and modules in Python</li>
+                <li>✔️ Dive into object-oriented programming concepts</li>
+                <li>✔️ Build real-world projects: automation, data analysis, and web scraping</li>
+                <li>✔️ Learn error handling and debugging techniques</li>
+            </ul>
+
+            <!-- Enroll Button -->
+            <div class="enroll-section">
+                <button>Enroll Now</button>
+            </div>
+        </section>
+
+        <!-- Course Content Section -->
+        <section class="course-content">
+            <h2>Course Content</h2>
+            <p>📚 12 Modules | 🎥 95 Lessons | ⏰ 8h 9m</p>
+            <div class="modules-container">
+                <div class="module-box">
+                    <h3>Module 1: Introduction</h3>
+                    <ul>
+                        <li>What is Python? (6:39)</li>
+                        <li>Setting Up Your Environment (4:50)</li>
+                        <li>Writing Your First Python Program (3:20)</li>
+                    </ul>
+                </div>
+                <div class="module-box">
+                    <h3>Module 2: Python Basics</h3>
+                    <ul>
+                        <li>Variables and Data Types (10:00)</li>
+                        <li>Input/Output and String Formatting (8:45)</li>
+                        <li>Control Flow: if-else, loops (15:20)</li>
+                    </ul>
+                </div>
+                <div class="module-box">
+                    <h3>Module 3:  Data Structures</h3>
+                    <ul>
+                        <li>Lists, Tuples, and Sets (20:00)</li>
+                        <li>Dictionaries in Python (15:10)</li>
+                    </ul>
+                </div>
+                <div class="module-box">
+                    <h3>Module 4: Object-Oriented Programming</h3>
+                    <ul>
+                        <li>Classes and Objects (12:50)</li>
+                        <li>Inheritance and Polymorphism (18:30)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instructor Section -->
+        <section class="instructor">
+            <h2>Instructor of this Course</h2>
+            <div class="instructor-container">
+                <div class="instructor-image">
+                    <img src="/assets/ins1.webp" alt="Instructor Photo">
+                </div>
+                <div class="instructor-details">
+                    <p><strong>Tarun Luthra</strong></p>
+                    <div class="instructor-stats">
+                        <div>👨‍🎓 1000+ Students on Scaler Platform</div>
+                        <div>🕒 163 Hours of Lectures Delivered</div>
+                        <div>⭐ 5-Star Instructor on Scaler</div>
+                        <div>📚 1 Course</div>
+                    </div>
+                </div>
+            </div>
+            <div class="instructor-bio">
+                <p>
+                    Tarun Luthra is a seasoned developer and educator passionate about teaching Python programming and data structures. With experience in startups and a strong commitment to mentoring budding programmers, his teaching style is engaging and highly effective.
+                </p>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews">
+            <h2>Reviews</h2>
+            <div id="review-container">
+                <div class="review">
+                    <p>"I recently completed the Python Course. The explanations were clear, and the real-world projects were a great learning experience!"</p>
+                    <p>- Archana Maravi</p>
+                </div>
+                <div class="review">
+                    <p>"This course is perfect for beginners. I now feel confident in writing Python programs and using Python for data analysis."</p>
+                    <p>- Ritika Sharma</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+          <!-- Main Footer Content -->
+          <div class="footer-content">
+            <!-- About Us Section -->
+            <div class="footer-item">
+              <h3><a href="#about">About Us</a></h3>
+              <p>
+                Bit2Byte is a leading online learning platform offering a wide range of courses to help you achieve your
+                educational goals.
+              </p>
+            </div>
+            <!-- Contact Us Section -->
+            <div class="footer-item">
+              <h3><a href="#contact">Contact Us</a></h3>
+              <p><i class="fas fa-phone"></i> +91 9905478212</p>
+              <p><i class="fas fa-envelope"></i> info@bit2byte.com</p>
+              <p><i class="fas fa-map-marker-alt"></i> Christ University DHARMARAM COLLEGE, Hosur Main Road, Bengaluru,
+                Karnataka 560029</p>
+            </div>
+            <!-- Quick Links Section -->
+            <div class="footer-item">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="/h">Home</a></li>
+                <li><a href="/aboutus">About</a></li>
+                <li><a href="/courses">Courses</a></li>
+                <li><a href=/contactus>Contact</a></li>
+                <li><a href="/compiler">Compiler</a></li>
+                <li><a href=/blog>Tech Blogs</a></li>
+              </ul>
+            </div>
+            <div class="footer-item">
+              <h3>Follow Us</h3>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+            <div class="footer-item">
+              <h3>Subscribe to Our Newsletter</h3>
+              <form action="/subscribe" method="post" class="newsletter-form">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit" class="btn">Subscribe</button>
+              </form>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2024 Bit2Byte. All rights reserved.
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms And Conditions</a>
+            <p class="credits">
+              Developed by Yashu, Aditya, and Varun with <span class="emoji">❤️</span>
+            </p>
+            </p>
+            </p>
+          </div>
+        </div>
+      </footer>
+
+    <!-- JavaScript for Dynamic Reviews -->
+    <script>
+        const reviews = [
+            { text: "I recently completed the Java Course...", author: "Archana Maravi" },
+            { text: "I'm thrilled to announce that I successfully completed...", author: "Abhishek Kumar" },
+            { text: "The instructor explained Java concepts so well...", author: "Ritika Sharma" },
+        ];
+
+        let currentReview = 0;
+
+        function updateReviews() {
+            const reviewContainer = document.getElementById("review-container");
+            const review = reviews[currentReview];
+            reviewContainer.innerHTML = `
+                <div class="review">
+                    <p>"${review.text}"</p>
+                    <p>- ${review.author}</p>
+                </div>
+            `;
+            currentReview = (currentReview + 1) % reviews.length;
+        }
+
+        // Rotate reviews every 5 seconds
+        setInterval(updateReviews, 2500);
+        updateReviews();
+    </script>
+</body>
+</html>

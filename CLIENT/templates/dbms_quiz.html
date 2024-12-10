@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bit2Byte | DBMS Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='/logo.png') }}" />
+    
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>DBMS Quiz</h1>
+
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <button class="btn" onclick="startQuiz()">Start Quiz</button>
+        </div>
+
+        <!-- Question Screen -->
+        <div id="question-screen" class="screen">
+            <div class="timer" id="timer">Time left: 20</div>
+            <div class="question-box">
+                <p id="score-per-question" class="score-info">Score for this question: 10</p>
+                <p id="question-text" class="question-text">Question text will go here</p>
+                <div class="answers">
+                    <button onclick="answerQuestion(1)" id="option1" class="answer-btn">Option 1</button>
+                    <button onclick="answerQuestion(2)" id="option2" class="answer-btn">Option 2</button>
+                    <button onclick="answerQuestion(3)" id="option3" class="answer-btn">Option 3</button>
+                    <button onclick="answerQuestion(4)" id="option4" class="answer-btn">Option 4</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="screen">
+            <h2>Your Score: <span id="score"></span></h2>
+            <button class="btn" onclick="restartQuiz()">Restart Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 0;
+        let score = 0;
+        let timer;
+
+        const questions = [
+            { text: "What does DBMS stand for?", options: ["Database Management System", "Data Build Management System", "Database Monitoring Software", "Data Backup Management System"], correct: 1, points: 10 },
+            { text: "Which of the following is NOT a type of database?", options: ["Hierarchical", "Relational", "Network", "Blockchain"], correct: 4, points: 10 },
+            { text: "What is the full form of SQL?", options: ["Structured Query List", "Simple Query Language", "Structured Query Language", "Standard Query Language"], correct: 3, points: 10 },
+            { text: "Which key uniquely identifies a record in a table?", options: ["Primary Key", "Foreign Key", "Candidate Key", "Unique Key"], correct: 1, points: 10 },
+            { text: "Which command is used to retrieve data from a database?", options: ["INSERT", "DELETE", "UPDATE", "SELECT"], correct: 4, points: 10 },
+            { text: "What is a foreign key used for?", options: ["To uniquely identify records", "To connect two tables", "To enforce NULL values", "To backup the database"], correct: 2, points: 10 },
+            { text: "Which normalization form ensures no repeating groups?", options: ["1NF", "2NF", "3NF", "BCNF"], correct: 1, points: 10 },
+            { text: "Which of the following is a DDL command?", options: ["SELECT", "DROP", "INSERT", "UPDATE"], correct: 2, points: 10 },
+            { text: "What is the purpose of a JOIN in SQL?", options: ["To combine rows from two or more tables", "To delete duplicate rows", "To create a new database", "To update table indexes"], correct: 1, points: 10 },
+            { text: "Which of these is NOT a NoSQL database?", options: ["MongoDB", "Redis", "Oracle", "Cassandra"], correct: 3, points: 10 },
+        ];
+
+        function startQuiz() {
+            document.getElementById("start-screen").classList.remove("active");
+            document.getElementById("question-screen").classList.add("active");
+            loadQuestion();
+            startTimer();
+        }
+
+        function loadQuestion() {
+            const question = questions[currentQuestion];
+            document.getElementById("question-text").innerText = question.text;
+            document.getElementById("score-per-question").innerText = `Score for this question: ${question.points}`;
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(`option${i + 1}`).innerText = question.options[i];
+            }
+        }
+
+        function answerQuestion(option) {
+            const question = questions[currentQuestion];
+            if (option === question.correct) {
+                score += question.points;
+            }
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                endQuiz();
+            }
+        }
+
+        function startTimer() {
+            let timeLeft = 20;
+            const timerElement = document.getElementById("timer");
+            timer = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    endQuiz();
+                } else {
+                    timerElement.innerText = `Time left: ${timeLeft}`;
+                    timeLeft--;
+                }
+            }, 1000);
+        }
+
+        function endQuiz() {
+            clearInterval(timer);
+            document.getElementById("question-screen").classList.remove("active");
+            document.getElementById("result-screen").classList.add("active");
+            document.getElementById("score").innerText = score;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById("result-screen").classList.remove("active");
+            document.getElementById("start-screen").classList.add("active");
+        }
+    </script>
+</body>
+</html>

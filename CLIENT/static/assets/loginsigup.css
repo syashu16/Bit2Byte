@@ -1,0 +1,151 @@
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, rgb(238, 180, 180), rgb(225, 160, 225), rgb(240, 240, 180), rgb(180, 230, 180), rgb(225, 175, 225));
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transition: all 0.3s ease;
+}
+
+.container {
+  max-width: 450px;
+  width: 90%;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+  text-align: center;
+  border: 1px solid black;
+  box-shadow: #000000;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #6a11cb;
+}
+
+p {
+  color: #000000;
+  font-size: 14px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form input {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: border 0.3s ease;
+}
+
+form input:focus {
+  border: 1px solid #6a11cb;
+  outline: none;
+  box-shadow: 0 0 5px rgba(106, 17, 203, 0.2);
+}
+
+.btn {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(to right, #2575fc, #6a11cb);
+  transform: translateY(-3px);
+}
+
+a {
+  text-decoration: none;
+  color: #6a11cb;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.role-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.role-buttons button {
+  flex: 1;
+  padding: 10px;
+  margin: 0 5px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background: #ddd;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.role-buttons button.active {
+  background: #6a11cb;
+  color: #fff;
+}
+
+.role-buttons button:hover {
+  background: #2575fc;
+  color: #fff;
+}
+
+.role-message {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.social-login {
+  margin-top: 20px;
+}
+
+.social-login p {
+  font-size: 14px;
+  color: #555;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #f3f3f3;
+  color: #333;
+  font-size: 20px;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+.social-icons a:hover {
+  background: #2575fc;
+  color: #fff;
+  transform: translateY(-3px);
+}

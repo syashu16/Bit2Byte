@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bit2Byte | Python Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='/logo.png') }}" />
+</head>
+<body>
+    
+    <div class="quiz-container">
+        <h1>Python Quiz</h1>
+
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <button class="btn" onclick="startQuiz()">Start Quiz</button>
+        </div>
+
+        <!-- Question Screen -->
+        <div id="question-screen" class="screen">
+            <div class="timer" id="timer">Time left: 20</div>
+            <div class="question-box">
+                <p id="score-per-question" class="score-info">Score for this question: 10</p>
+                <p id="question-text" class="question-text">Question text will go here</p>
+                <div class="answers">
+                    <button onclick="answerQuestion(1)" id="option1" class="answer-btn">Option 1</button>
+                    <button onclick="answerQuestion(2)" id="option2" class="answer-btn">Option 2</button>
+                    <button onclick="answerQuestion(3)" id="option3" class="answer-btn">Option 3</button>
+                    <button onclick="answerQuestion(4)" id="option4" class="answer-btn">Option 4</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="screen">
+            <h2>Your Score: <span id="score"></span></h2>
+            <button class="btn" onclick="restartQuiz()">Restart Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 0;
+        let score = 0;
+        let timer;
+
+        const questions = [
+            { text: "What is the correct syntax to output 'Hello World' in Python?", options: ["echo 'Hello World'", "p('Hello World')", "print('Hello World')", "printf('Hello World')"], correct: 3, points: 10 },
+            { text: "Which of the following is NOT a Python data type?", options: ["List", "Tuple", "Map", "Set"], correct: 3, points: 10 },
+            { text: "What is the output of 2 ** 3 in Python?", options: ["6", "8", "9", "None"], correct: 2, points: 10 },
+            { text: "Which keyword is used for defining a function in Python?", options: ["func", "define", "def", "function"], correct: 3, points: 10 },
+            { text: "How do you insert comments in Python?", options: ["//", "/* */", "#", "<!-- -->"], correct: 3, points: 10 },
+            { text: "Which method is used to add an element to a list?", options: ["append()", "add()", "insert()", "push()"], correct: 1, points: 10 },
+            { text: "What is the result of len([1, 2, 3, 4])?", options: ["3", "4", "5", "None"], correct: 2, points: 10 },
+            { text: "Which of the following is used to handle exceptions in Python?", options: ["try-except", "try-catch", "catch-finally", "try-finally"], correct: 1, points: 10 },
+            { text: "Which of the following is immutable in Python?", options: ["List", "Set", "Tuple", "Dictionary"], correct: 3, points: 10 },
+            { text: "What is the output of print(type(10)) in Python?", options: ["<class 'int'>", "<class 'float'>", "<class 'str'>", "<class 'number'>"], correct: 1, points: 10 },
+        ];
+
+        function startQuiz() {
+            document.getElementById("start-screen").classList.remove("active");
+            document.getElementById("question-screen").classList.add("active");
+            loadQuestion();
+            startTimer();
+        }
+
+        function loadQuestion() {
+            const question = questions[currentQuestion];
+            document.getElementById("question-text").innerText = question.text;
+            document.getElementById("score-per-question").innerText = `Score for this question: ${question.points}`;
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(`option${i + 1}`).innerText = question.options[i];
+            }
+        }
+
+        function answerQuestion(option) {
+            const question = questions[currentQuestion];
+            if (option === question.correct) {
+                score += question.points;
+            }
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                endQuiz();
+            }
+        }
+
+        function startTimer() {
+            let timeLeft = 20;
+            const timerElement = document.getElementById("timer");
+            timer = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    endQuiz();
+                } else {
+                    timerElement.innerText = `Time left: ${timeLeft}`;
+                    timeLeft--;
+                }
+            }, 1000);
+        }
+
+        function endQuiz() {
+            clearInterval(timer);
+            document.getElementById("question-screen").classList.remove("active");
+            document.getElementById("result-screen").classList.add("active");
+            document.getElementById("score").innerText = score;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById("result-screen").classList.remove("active");
+            document.getElementById("start-screen").classList.add("active");
+        }
+    </script>
+</body>
+</html>

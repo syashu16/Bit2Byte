@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Stack Development Course - Build Dynamic Web Applications</title>
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='course.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo" style="color:white";>
+                <img src="/assets/icon.png" alt="Brand Logo" class="logo-img" />
+                Bit2Byte
+            </div>
+            <ul class="nav-links">
+                <li><a href="/h">Home</a></li>
+                <li><a href="/aboutus">About</a></li>
+                <li><a href="courses">Courses</a></li>
+                <li><a href=/contactus>Contact</a></li>
+                <li><a href=/events>Events</a></li>
+                <li><a href=/loginsigup class="btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Course Overview Section -->
+        <section class="course-overview">
+            <div class="course-info">
+                <h1>AI & ML Course - Master Artificial Intelligence</h1>
+                <p><strong>Free AI & ML Course with Certificate Online (2024)</strong></p>
+                <p>Unlock the potential of Artificial Intelligence and Machine Learning with this comprehensive course.
+                    Learn neural networks, natural language processing, and advanced ML algorithms to solve real-world
+                    problems.</p>
+            </div>
+        </section>
+
+        <!-- Course Details and Video Section -->
+        <section class="course-details-video">
+            <div class="video-section">
+                <video width="100%" height="auto" controls>
+                    <source src="/assets/ai.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="course-details">
+                <h3>Course Details</h3><br>
+                <p>📅 Duration: 20h 30m (12 Modules)</p>
+                <p>⚡ Challenges: 15 Projects</p>
+                <p>🧑‍🎓 Course Level: Intermediate to Advanced</p>
+                <p>🏆 Certificate: Included</p>
+            </div>
+        </section>
+
+        <!-- What You Will Learn Section -->
+        <section class="what-learn">
+            <h2>What You Will Learn</h2>
+            <ul>
+                <li>✔️ Understand the fundamentals of AI and ML</li>
+                <li>✔️ Learn supervised and unsupervised learning techniques</li>
+                <li>✔️ Master neural networks and deep learning</li>
+                <li>✔️ Explore natural language processing (NLP)</li>
+                <li>✔️ Build predictive models and AI applications</li>
+                <li>✔️ Work with TensorFlow and PyTorch frameworks</li>
+            </ul>
+
+            <!-- Enroll Button -->
+            <div class="enroll-section">
+                <button>Enroll Now</button>
+            </div>
+        </section>
+
+        <!-- Course Content Section -->
+        <section class="course-content">
+            <h2>Course Content</h2>
+            <p>📚 12 Modules | 🎥 200 Lessons | ⏰ 20h 30m</p>
+            <div class="modules-container">
+                <div class="module-box">
+                    <h3>Module 1: Introduction to AI & ML</h3>
+                    <ul>
+                        <li>What is Artificial Intelligence? (10:00)</li>
+                        <li>Machine Learning Overview (8:45)</li>
+                        <li>Applications of AI & ML (9:30)</li>
+                    </ul>
+                </div>
+                <div class="module-box">
+                    <h3>Module 2: Supervised Learning</h3>
+                    <ul>
+                        <li>Linear and Logistic Regression (15:30)</li>
+                        <li>Decision Trees and Random Forests (18:00)</li>
+                        <li>Support Vector Machines (14:45)</li>
+                    </ul>
+                </div>
+                <div class="module-box">
+                    <h3>Module 3: Neural Networks</h3>
+                    <ul>
+                        <li>Introduction to Neural Networks (20:00)</li>
+                        <li>Backpropagation and Optimization (18:30)</li>
+                        <li>Building Neural Networks in TensorFlow (25:00)</li>
+                    </ul>
+                </div>
+                <div class="module-box">
+                    <h3>Module 4: Natural Language Processing (NLP)</h3>
+                    <ul>
+                        <li>Text Preprocessing and Tokenization (12:50)</li>
+                        <li>Sentiment Analysis with NLP (15:00)</li>
+                        <li>Building Chatbots (18:45)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instructor Section -->
+        <section class="instructor">
+            <h2>Instructor of this Course</h2>
+            <div class="instructor-container">
+                <div class="instructor-image">
+                    <img src="assets/ins6.webp" alt="Instructor Photo">
+                </div>
+                <div class="instructor-details">
+                    <p><strong>Dr. Arjun Mehta</strong></p>
+                    <div class="instructor-stats">
+                        <div>👨‍🎓 5000+ Students Taught</div>
+                        <div>🕒 600 Hours of Lectures Delivered</div>
+                        <div>⭐ 4.9-Star Rated Instructor</div>
+                        <div>📚 3 Courses</div>
+                    </div>
+                </div>
+            </div>
+            <div class="instructor-bio">
+                <p>
+                    Dr. Arjun Mehta is an AI researcher with over 12 years of experience in machine learning and
+                    artificial intelligence. He has worked with leading tech companies and is passionate about teaching
+                    cutting-edge AI techniques to students and professionals.
+                </p>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews">
+            <h2>Reviews</h2>
+            <div id="review-container">
+                <div class="review">
+                    <p>"This AI course has been transformative for me. The real-world projects and hands-on practice
+                        were invaluable!"</p>
+                    <p>- Ananya Gupta</p>
+                </div>
+                <div class="review">
+                    <p>"Dr. Mehta explains complex topics in an easy-to-understand way. I loved every bit of this
+                        course."</p>
+                    <p>- Sameer Singh</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="footer-content">
+                <!-- About Us Section -->
+                <div class="footer-item">
+                    <h3><a href="#about">About Us</a></h3>
+                    <p>
+                        Bit2Byte is a leading online learning platform offering a wide range of courses to help you
+                        achieve your
+                        educational goals.
+                    </p>
+                </div>
+                <!-- Contact Us Section -->
+                <div class="footer-item">
+                    <h3><a href="#contact">Contact Us</a></h3>
+                    <p><i class="fas fa-phone"></i> +91 9905478212</p>
+                    <p><i class="fas fa-envelope"></i> info@bit2byte.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Christ University DHARMARAM COLLEGE, Hosur Main Road,
+                        Bengaluru,
+                        Karnataka 560029</p>
+                </div>
+                <!-- Quick Links Section -->
+                <div class="footer-item">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/h">Home</a></li>
+                        <li><a href="/aboutus">About</a></li>
+                        <li><a href="/courses">Courses</a></li>
+                        <li><a href=/contactus>Contact</a></li>
+                        <li><a href="/compiler">Compiler</a></li>
+                        <li><a href=/blog>Tech Blogs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-item">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <form action="/subscribe" method="post" class="newsletter-form">
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bit2Byte. All rights reserved.
+                <p><a href="#">Privacy Policy</a> | <a href="#">Terms And Conditions</a>
+                <p class="credits">
+                    Developed by Yashu, Aditya, and Varun with <span class="emoji">❤️</span>
+                </p>
+                </p>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Dynamic Reviews -->
+    <script>
+        const reviews = [
+            { text: "This AI course has been transformative for me. The real-world projects and hands-on practice were invaluable!", author: "Ananya Gupta" },
+            { text: "Dr. Mehta explains complex topics in an easy-to-understand way. I loved every bit of this course.", author: "Sameer Singh" },
+            { text: "One of the best AI/ML courses I have ever taken. Highly recommended!", author: "Rajesh Verma" },
+        ];
+
+        let currentReview = 0;
+
+        function updateReviews() {
+            const reviewContainer = document.getElementById("review-container");
+            const review = reviews[currentReview];
+            reviewContainer.innerHTML = `
+                <div class="review">
+                    <p>"${review.text}"</p>
+                    <p>- ${review.author}</p>
+                </div>
+            `;
+            currentReview = (currentReview + 1) % reviews.length;
+        }
+
+        // Rotate reviews every 5 seconds
+        setInterval(updateReviews, 2500);
+        updateReviews();
+    </script>
+</body>
+
+</html>

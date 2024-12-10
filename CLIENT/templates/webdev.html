@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Stack Development Course - Build Dynamic Web Applications</title>
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='course.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo" style="color:white";>
+                <img src="/assets/icon.png" alt="Brand Logo" class="logo-img" />
+                Bit2Byte
+            </div>
+            <ul class="nav-links">
+                <li><a href="/h">Home</a></li>
+                <li><a href="/aboutus">About</a></li>
+                <li><a href="courses">Courses</a></li>
+                <li><a href=/contactus>Contact</a></li>
+                <li><a href=/events>Events</a></li>
+                <li><a href=/loginsigup class="btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Course Overview Section -->
+        <section class="course-overview">
+            <div class="course-info">
+                <h1>Full-Stack Development Course - Build Dynamic Web Applications</h1>
+                <p><strong>Free Full-Stack Development Course with Certificate Online (2024)</strong></p>
+                <p>Master the art of web development with this comprehensive Full-Stack Development course. Learn
+                    front-end and back-end development, work with databases, and create fully functional web
+                    applications. This course is ideal for beginners and intermediate learners looking to build a career
+                    in web development.</p>
+            </div>
+        </section>
+
+        <!-- Course Details and Video Section -->
+        <section class="course-details-video">
+            <div class="video-section">
+                <video width="100%" height="auto" controls>
+                    <source src="/assets/webdev.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="course-details">
+                <h3>Course Details</h3><br>
+                <p>📅 Duration: 12h 30m (10 Modules)</p>
+                <p>⚡ Challenges: 15 Projects</p>
+                <p>🧑‍🎓 Course Level: Beginner to Intermediate</p>
+                <p>🏆 Certificate: Included</p>
+            </div>
+        </section>
+
+        <!-- What You Will Learn Section -->
+        <section class="what-learn">
+            <h2>What You Will Learn</h2>
+            <ul>
+                <li>✔️ Create dynamic websites using HTML, CSS, and JavaScript</li>
+                <li>✔️ Build server-side applications with Node.js and Express</li>
+                <li>✔️ Manage databases using MySQL and MongoDB</li>
+                <li>✔️ Develop RESTful APIs and integrate front-end with back-end</li>
+                <li>✔️ Work with modern frameworks like React or Angular</li>
+                <li>✔️ Deploy web applications to live servers using cloud platforms</li>
+            </ul>
+
+            <!-- Enroll Button -->
+            <div class="enroll-section">
+                <button class="enroll-button" onclick="window.location.href='/enrol'">Enroll Now</button>
+            </div>
+        </section>
+
+        <!-- Course Content Section -->
+        <section class="course-content">
+            <h2>Course Content</h2>
+            <p>📚 10 Modules | 🎥 120 Lessons | ⏰ 12h 30m</p>
+            <div class="modules-container">
+                <div class="module-box">
+                    <h3>Module 1: Introduction to Web Development</h3>
+                    <ul>
+                        <li>Overview of Web Technologies (5:30)</li>
+                        <li>Setting Up Development Environment (8:00)</li>
+                        <li>Understanding Client-Server Architecture (6:45)</li>
+                    </ul>
+                </div>
+                <div class="module-box">
+                    <h3>Module 2: Front-End Basics</h3>
+                    <ul>
+                        <li>HTML5 and Semantic Elements (15:20)</li>
+                        <li>CSS3 for Styling and Layouts (20:00)</li>
+                        <li>JavaScript Fundamentals (25:00)</li>
+                    </ul>
+                </div>
+                <div class="module-box">
+                    <h3>Module 3: Back-End Development</h3>
+                    <ul>
+                        <li>Introduction to Node.js (10:45)</li>
+                        <li>Building RESTful APIs with Express.js (30:00)</li>
+                        <li>Connecting to Databases (20:10)</li>
+                    </ul>
+                </div>
+                <div class="module-box">
+                    <h3>Module 4: Advanced Topics</h3>
+                    <ul>
+                        <li>Working with React/Angular (30:00)</li>
+                        <li>Authentication and Authorization (25:00)</li>
+                        <li>Deployment on AWS/Heroku (20:00)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instructor Section -->
+        <section class="instructor">
+            <h2>Instructor of this Course</h2>
+            <div class="instructor-container">
+                <div class="instructor-image">
+                    <img src="/assets/ins2.jpeg" alt="Instructor Photo">
+                </div>
+                <div class="instructor-details">
+                    <p><strong>Priya Sharma</strong></p>
+                    <div class="instructor-stats">
+                        <div>👨‍🎓 2000+ Students Taught</div>
+                        <div>🕒 200+ Hours of Lectures Delivered</div>
+                        <div>⭐ 5-Star Rated Instructor</div>
+                        <div>📚 3 Courses</div>
+                    </div>
+                </div>
+            </div>
+            <div class="instructor-bio">
+                <p>
+                    Priya Sharma is a senior full-stack developer with expertise in modern web development frameworks.
+                    With years of experience in the tech industry and a passion for teaching, Priya ensures learners
+                    grasp both theory and practical implementation seamlessly.
+                </p>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews">
+            <h2>Reviews</h2>
+            <div id="review-container">
+                <div class="review">
+                    <p>"The Full-Stack Development course was extremely well-structured. I now feel confident building
+                        full-stack applications."</p>
+                    <p>- Aman Mehta</p>
+                </div>
+                <div class="review">
+                    <p>"Amazing course! It covered everything from HTML basics to deploying web applications on live
+                        servers."</p>
+                    <p>- Sneha Kapoor</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+          <!-- Main Footer Content -->
+          <div class="footer-content">
+            <!-- About Us Section -->
+            <div class="footer-item">
+              <h3><a href="#about">About Us</a></h3>
+              <p>
+                Bit2Byte is a leading online learning platform offering a wide range of courses to help you achieve your
+                educational goals.
+              </p>
+            </div>
+            <!-- Contact Us Section -->
+            <div class="footer-item">
+              <h3><a href="#contact">Contact Us</a></h3>
+              <p><i class="fas fa-phone"></i> +91 9905478212</p>
+              <p><i class="fas fa-envelope"></i> info@bit2byte.com</p>
+              <p><i class="fas fa-map-marker-alt"></i> Christ University DHARMARAM COLLEGE, Hosur Main Road, Bengaluru,
+                Karnataka 560029</p>
+            </div>
+            <!-- Quick Links Section -->
+            <div class="footer-item">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="/h">Home</a></li>
+                <li><a href="/aboutus">About</a></li>
+                <li><a href="/courses">Courses</a></li>
+                <li><a href=/contactus>Contact</a></li>
+                <li><a href="/compiler">Compiler</a></li>
+                <li><a href=/blog>Tech Blogs</a></li>
+              </ul>
+            </div>
+            <div class="footer-item">
+              <h3>Follow Us</h3>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+            <div class="footer-item">
+              <h3>Subscribe to Our Newsletter</h3>
+              <form action="/subscribe" method="post" class="newsletter-form">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit" class="btn">Subscribe</button>
+              </form>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2024 Bit2Byte. All rights reserved.
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms And Conditions</a>
+            <p class="credits">
+              Developed by Yashu, Aditya, and Varun with <span class="emoji">❤️</span>
+            </p>
+            </p>
+            </p>
+          </div>
+        </div>
+      </footer>
+
+    <!-- JavaScript for Dynamic Reviews -->
+    <script>
+        const reviews = [
+            { text: "The Full-Stack Development course was extremely well-structured. I now feel confident building full-stack applications.", author: "Aman Mehta" },
+            { text: "Amazing course! It covered everything from HTML basics to deploying web applications on live servers.", author: "Sneha Kapoor" },
+            { text: "A comprehensive course for anyone aiming to learn full-stack development!", author: "Raj Verma" },
+        ];
+
+        let currentReview = 0;
+
+        function updateReviews() {
+            const reviewContainer = document.getElementById("review-container");
+            const review = reviews[currentReview];
+            reviewContainer.innerHTML = `
+                <div class="review">
+                    <p>"${review.text}"</p>
+                    <p>- ${review.author}</p>
+                </div>
+            `;
+            currentReview = (currentReview + 1) % reviews.length;
+        }
+
+        // Rotate reviews every 5 seconds
+        setInterval(updateReviews, 2500);
+        updateReviews();
+    </script>
+</body>
+
+</html>

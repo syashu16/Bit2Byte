@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bit2Byte | Web Development Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='/logo.png') }}" />
+    <script>
+        // Quiz Logic
+        let currentQuestion = 0;
+        let score = 0;
+        let timer;
+
+        const questions = [
+            { text: "Which HTML tag is used to define an internal style sheet?", options: ["<style>", "<script>", "<css>", "<link>"], correct: 1, points: 10 },
+            { text: "What does CSS stand for?", options: ["Cascading Style Sheets", "Creative Style Sheets", "Computer Style Sheets", "Colorful Style Sheets"], correct: 1, points: 10 },
+            { text: "Which property is used to change the background color in CSS?", options: ["color", "bgColor", "background-color", "bg-style"], correct: 3, points: 10 },
+            { text: "What does JavaScript primarily run on?", options: ["Server", "Browser", "Operating System", "None of the above"], correct: 2, points: 10 },
+            { text: "Which HTML attribute is used to define inline styles?", options: ["style", "class", "id", "styles"], correct: 1, points: 10 },
+        ];
+
+        function startQuiz() {
+            document.getElementById("start-screen").classList.remove("active");
+            document.getElementById("question-screen").classList.add("active");
+            loadQuestion();
+            startTimer();
+        }
+
+        function loadQuestion() {
+            const question = questions[currentQuestion];
+            document.getElementById("question-text").innerText = question.text;
+            document.getElementById("score-per-question").innerText = `Score for this question: ${question.points}`;
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(`option${i + 1}`).innerText = question.options[i];
+            }
+        }
+
+        function answerQuestion(option) {
+            const question = questions[currentQuestion];
+            if (option === question.correct) {
+                score += question.points;
+            }
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                endQuiz();
+            }
+        }
+
+        function startTimer() {
+            let timeLeft = 20;
+            const timerElement = document.getElementById("timer");
+            timer = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    endQuiz();
+                } else {
+                    timerElement.innerText = `Time left: ${timeLeft}`;
+                    timeLeft--;
+                }
+            }, 1000);
+        }
+
+        function endQuiz() {
+            clearInterval(timer);
+            document.getElementById("question-screen").classList.remove("active");
+            document.getElementById("result-screen").classList.add("active");
+            document.getElementById("score").innerText = score;
+
+            // Send score to backend
+            fetch('/submit_quiz', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    quiz_name: "Web Development Quiz", // Change quiz name if needed
+                    score: score
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log("Score saved successfully!");
+                } else {
+                    console.error("Error saving score:", data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById("result-screen").classList.remove("active");
+            document.getElementById("start-screen").classList.add("active");
+        }
+    </script>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Web Development Quiz</h1>
+
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <button class="btn" onclick="startQuiz()">Start Quiz</button>
+        </div>
+
+        <!-- Question Screen -->
+        <div id="question-screen" class="screen">
+            <div class="timer" id="timer">Time left: 20</div>
+            <div class="question-box">
+                <p id="score-per-question" class="score-info">Score for this question: 10</p>
+                <p id="question-text" class="question-text">Question text will go here</p>
+                <div class="answers">
+                    <button onclick="answerQuestion(1)" id="option1" class="answer-btn">Option 1</button>
+                    <button onclick="answerQuestion(2)" id="option2" class="answer-btn">Option 2</button>
+                    <button onclick="answerQuestion(3)" id="option3" class="answer-btn">Option 3</button>
+                    <button onclick="answerQuestion(4)" id="option4" class="answer-btn">Option 4</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="screen">
+            <h2>Your Score: <span id="score"></span></h2>
+            <button class="btn" onclick="restartQuiz()">Restart Quiz</button>
+        </div>
+    </div>
+</body>
+</html>

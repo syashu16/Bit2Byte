@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/logo.png') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='compiler.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="{{ url_for('static', filename='compiler.js') }}"></script>
+    <title>BIT2BYTE Compiler</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="/assets/icon.png" alt="Brand Logo" class="logo-img" />
+                Bit2Byte
+            </div>
+            <ul class="nav-links">
+                <li><a href="/h">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="contactus.html">Contact</a></li>
+                <li><a href="#get-started" class="btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="compiler">
+        <section class="custom-page">
+            <h1>Online Code Compiler</h1>
+            <div class="compiler-container">
+                <textarea id="code" placeholder="Write your code here..."></textarea>
+                <div class="compiler-options">
+                    <select id="language">
+                        <option value="python3">Python 3</option>
+                        <option value="java">Java</option>
+                        <option value="c">C</option>
+                        <option value="cpp">C++</option>
+                    </select>
+                    <button onclick="runCode()" class="btn compile-btn">Run Code</button>
+                </div>
+                <div id="loading" class="loading-spinner" style="display: none;">Compiling...</div>
+                <h3>Output:</h3>
+                <pre id="output" class="compiler-output"></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- About Us Section -->
+                <div class="footer-item">
+                    <h3><a href="#about">About Us</a></h3>
+                    <p>
+                        Bit2Byte is a leading online learning platform offering a wide range of courses to help you
+                        achieve your educational goals.
+                    </p>
+                </div>
+                <!-- Contact Us Section -->
+                <div class="footer-item">
+                    <h3><a href="#contact">Contact Us</a></h3>
+                    <p><i class="fas fa-phone"></i> +91 9905478212</p>
+                    <p><i class="fas fa-envelope"></i> info@bit2byte.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Christ University DHARMARAM COLLEGE, Hosur Main Road,
+                        Bengaluru, Karnataka 560029</p>
+                </div>
+                <!-- Quick Links Section -->
+                <div class="footer-item">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="contactus.html">Contact</a></li>
+                        <li><a href="/compiler">Compiler</a></li>
+                    </ul>
+                </div>
+                <div class="footer-item">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <form action="/subscribe" method="post" class="newsletter-form">
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bit2Byte. All rights reserved.</p>
+                <p><a href="#">Privacy Policy</a> | <a href="#">Terms And Conditions</a></p>
+                <p class="credits">
+                    Developed by Yashu, Aditya, and Varun with <span class="emoji">❤️</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

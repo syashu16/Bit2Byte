@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Bit2Byte</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='/logo.png') }}" />
+  
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='contactus.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <script src="{{ url_for('static', filename='') }}"></script>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo" style="color: white;">
+        <img src="/assets/icon.png" alt="Brand Logo" class="logo-img" />
+        Bit2Byte
+      </div>
+      <ul class="nav-links">
+        <li><a href="/h">Home</a></li>
+        <li><a href="/aboutus">About</a></li>
+        <li><a href="/courses">Courses</a></li>
+        <li><a href="/contactus">Contact</a></li>
+        <li><a href="/loginsigup" class="btn">Get Started</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Contact Us Section -->
+  <section class="contact-us" id="contact">
+    <div class="container">
+
+      <div class="contact-form">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need further information, feel free to reach out to us. We are here to help you!
+        </p>
+        <h3>Send Us a Message</h3>
+        <form action="/contact" method="POST">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+          
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+          
+          <button type="submit" class="btn">Send Message</button>
+      </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="container">
+      <h2>What Our Students Say</h2>
+      <div class="testimonial-item">
+        <p>"This platform has transformed my learning experience. The courses are well-structured and the instructors
+          are very knowledgeable."</p>
+        <h4>- Jane Doe</h4>
+      </div>
+      <div class="testimonial-item">
+        <p>"I love the interactive elements of the courses. They make learning so much more engaging and fun!"</p>
+        <h4>- John Smith</h4>
+      </div>
+      <div class="testimonial-item">
+        <p>"The customer support is fantastic. They helped me with all my queries promptly and efficiently."</p>
+        <h4>- Emily Johnson</h4>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <!-- Main Footer Content -->
+      <div class="footer-content">
+        <!-- About Us Section -->
+        <div class="footer-item">
+          <h3><a href="#about">About Us</a></h3>
+          <p>
+            Bit2Byte is a leading online learning platform offering a wide range of courses to help you achieve your
+            educational goals.
+          </p>
+        </div>
+        <!-- Contact Us Section -->
+        <div class="footer-item">
+          <h3><a href="#contact">Contact Us</a></h3>
+          <p><i class="fas fa-phone"></i> +91 9905478212</p>
+          <p><i class="fas fa-envelope"></i> info@bit2byte.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> Christ University DHARMARAM COLLEGE, Hosur Main Road, Bengaluru,
+            Karnataka 560029</p>
+        </div>
+        <!-- Quick Links Section -->
+        <div class="footer-item">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/h">Home</a></li>
+            <li><a href="/aboutus">About</a></li>
+            <li><a href="/courses">Courses</a></li>
+            <li><a href="/contactus">Contact</a></li>
+            <li><a href=/compiler>Compiler</a></li>
+          </ul>
+        </div>
+        <div class="footer-item">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-item">
+          <h3>Subscribe to Our Newsletter</h3>
+          <form action="/subscribe" method="post" class="newsletter-form">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Bit2Byte. All rights reserved.
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms And Conditions</a>
+        <p class="credits">
+          Developed by Yashu, Aditya, and Varun with <span class="emoji">❤️</span>
+        </p>
+        </p>
+        </p>
+      </div>
+
+    </div>
+  </footer>
+</body>
+
+</html>

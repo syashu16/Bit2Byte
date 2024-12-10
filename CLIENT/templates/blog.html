@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page | Bit2Byte</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='/logo.png') }}" />
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #444;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, rgb(238, 180, 180), rgb(225, 160, 225), rgb(240, 240, 180), rgb(180, 230, 180), rgb(225, 175, 225));
+        }
+
+        h1 {
+            text-align: center;
+            color: red;
+            margin: 20px 0;
+            font-size: 2.5rem;
+        }
+
+        h3 {
+            color: #ff0202;
+            font-size: 2rem;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            margin: 20px 0;
+            background: linear-gradient(90deg, #ff0202, #ff6b6b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .filter-form {
+            max-width: 640px;
+            margin: 20px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            color: #fff;
+        }
+
+        .filter-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .filter-form input,
+        .filter-form button {
+            width: 96%;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .filter-form input {
+            color: #555;
+        }
+
+        .filter-form button {
+            background-color: #ee0404;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .filter-form button:hover {
+            background-color: green;
+        }
+
+        .events-list {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .events-list li {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .events-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .events-list h3 {
+            margin: 0 0 10px;
+            color: #2c3e50;
+            font-size: 1.5rem;
+        }
+
+        .events-list img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .events-list p {
+            margin: 0 0 10px;
+            line-height: 1.6;
+        }
+
+        .events-list strong {
+            color: #555;
+            font-weight: 600;
+        }
+
+        hr {
+            border: 0;
+            height: 2px;
+            background: #eee;
+            margin: 30px auto;
+            width: 80%;
+        }
+        .blogs {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .blog-post {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-post h2 {
+            margin: 0 0 10px;
+            color: #2c3e50;
+            font-size: 1.8rem;
+        }
+
+        .blog-post .category,
+        .blog-post .tags {
+            color: #555;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .blog-post p {
+            margin: 0 0 10px;
+            line-height: 1.6;
+        }
+
+        hr {
+            border: 0;
+            height: 2px;
+            background: #eee;
+            margin: 30px auto;
+            width: 80%;
+        }
+        h2{
+            color: #ff0202;
+                /* Vibrant red for attention */
+                font-size: 2rem;
+                /* Slightly larger font size for emphasis */
+                font-family: 'Poppins', sans-serif;
+                /* Clean, modern font */
+                text-transform: uppercase;
+                /* Makes the text look bold and formal */
+                text-align: center;
+                /* Center the text for symmetry */
+                letter-spacing: 2px;
+                /* Adds spacing between letters for better readability */
+                text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+                /* Adds subtle shadow for depth */
+                margin: 20px 0;
+                /* Adds space around the heading */
+                background: linear-gradient(90deg, #ff0202, #ff6b6b);
+                /* Gradient effect */
+                background-clip: text;
+                -webkit-background-clip: text;
+                /* Clip gradient to text */
+                color: transparent;
+                /* Makes the gradient visible */
+        }
+        /* General styles for the form */
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: fit-content;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Label styles */
+form label {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Select box styles */
+form select {
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+form select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Button styles */
+form button {
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* H1 styles */
+h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo" style="color: white;">
+                <img src="/assets/icon.png" alt="Brand Logo" class="logo-img" />
+                Bit2Byte
+            </div>
+            <ul class="nav-links">
+                <li><a href="/h">Home</a></li>
+                <li><a href="/aboutus">About</a></li>
+                <li><a href="/courses">Courses</a></li>
+                <li><a href="/contactus">Contact</a></li>
+                <li><a href="/events">Events</a></li>
+                <li><a href="/loginsigup" class="btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>Blog Posts</h1>
+    <form method="POST" action="{{ url_for('show_blogs') }}">
+        <label for="category">Select Category:</label>
+        <select name="category" id="category">
+            <option value="">All Categories</option>
+            <option value="Machine Learning" {% if category_filter == 'Machine Learning' %}selected{% endif %}>Machine Learning</option>
+            <option value="Web Development" {% if category_filter == 'Web Development' %}selected{% endif %}>Web Development</option>
+            <option value="Data Science" {% if category_filter == 'Data Science' %}selected{% endif %}>Data Science</option>
+            <!-- Add more categories as needed -->
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+
+    <div class="blogs">
+        {% if blogs %}
+            {% for blog in blogs %}
+            <div class="blog-post">
+                <h2>{{ blog['title'] }}</h2>
+                <p class="category"><strong>Category:</strong> {{ blog['category'] }}</p>
+                <p class="tags"><strong>Tags:</strong> {{ blog['tags'] }}</p>
+                <p>{{ blog['content'] }}</p>
+            </div>
+            <hr>
+            {% endfor %}
+        {% else %}
+            <p>No blogs available at the moment.</p>
+        {% endif %}
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-item">
+                    <h3><a href="#about">About Us</a></h3>
+                    <p>Bit2Byte is a leading online learning platform offering a wide range of courses to help you achieve your educational goals.</p>
+                </div>
+                <div class="footer-item">
+                    <h3><a href="#contact">Contact Us</a></h3>
+                    <p><i class="fas fa-phone"></i> +91 9905478212</p>
+                    <p><i class="fas fa-envelope"></i> info@bit2byte.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Christ University DHARMARAM COLLEGE, Hosur Main Road, Bengaluru, Karnataka 560029</p>
+                </div>
+                <div class="footer-item">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href=/h>Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="contactus.html">Contact</a></li>
+                        <li><a href="/compiler">Compiler</a></li>
+                    </ul>
+                </div>
+                <div class="footer-item">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <form action="/subscribe" method="post" class="newsletter-form">
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
