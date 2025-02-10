@@ -4,7 +4,7 @@ from flask_bcrypt import Bcrypt
 import MySQLdb
 from flask_pymongo import PyMongo
 import os
-from werkzeug.utils import secure_filename
+from werkzeug.utils import secure_filename 
  
 
 app = Flask(
@@ -55,8 +55,8 @@ bcrypt = Bcrypt(app)
 def compiler():
     return render_template('compiler.html')
 
-JDoodle_ClientID = "65ea7ffb2ad2df011b343c107d9fcabe"
-JDoodle_ClientSecret = "8bff35ebdc1b006dbc6fe649de98e26b3059260a93739994e1c4489aab8f602e"
+JDoodle_ClientID = "f37ecf7dca17be8da412f16c2eadad15"
+JDoodle_ClientSecret = "9d9853d89a18d1652d1741beda32f5319d02f5de94030b9de85aa4969d698fcf"
 
 LANGUAGE_MAP = {
     'python3': 'python3',
